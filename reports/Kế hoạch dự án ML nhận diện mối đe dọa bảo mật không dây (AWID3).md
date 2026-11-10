@@ -1,6 +1,6 @@
 # Kế hoạch dự án: ML nhận diện mối đe dọa bảo mật không dây (AWID3)
 
-Nov 10, 2026 · @Louis
+Cập nhật: 2026-11-10 · Nhóm 3 người · Dữ liệu: AWID3 (chỉ dùng bản CSV)
 
 ## 1. Tổng quan và mục tiêu
 
@@ -15,13 +15,11 @@ Nhóm làm một nghiên cứu thực nghiệm đánh giá chặt chẽ các mô
 
 **Trong phạm vi:** phân loại nhị phân và đa lớp, phát hiện bất thường, giải thích mô hình, demo replay trên dữ liệu có sẵn.
 
-**Ngoài phạm vi (ghi rõ trong báo cáo là hướng phát triển):** bắt gói tin trực tiếp bằng card monitor mode, triển khai IDS thật, tự thu thập dữ liệu mới.
+**Ngoài phạm vi (ghi rõ trong báo cáo là hướng phát triển):** bắt gói tin trực tiếp bằng card monitor mode, triển khai IDS thật, tự thu thập dữ liệu mới, xử lý pcap.
 
 **Sản phẩm đầu ra:** repo GitHub, báo cáo, slide thuyết trình, demo Streamlit.
 
 ## 2. Câu hỏi nghiên cứu và đóng góp của nhóm
-
-Báo cáo xoay quanh bốn câu hỏi, mỗi câu gắn với một nhóm thí nghiệm ở mục 4.
 
 | Mã | Câu hỏi | Thí nghiệm |
 | --- | --- | --- |
@@ -38,21 +36,30 @@ Báo cáo xoay quanh bốn câu hỏi, mỗi câu gắn với một nhóm thí n
 
 ## 3. Dữ liệu AWID3
 
-Nhóm dùng bản CSV đã trích đặc trưng làm dữ liệu chính, vì bản pcap rất nặng và cần giải mã trước khi dùng. Pcap chỉ là phương án bổ sung nếu cần thêm đặc trưng cửa sổ thời gian mà CSV không đủ. Mọi thông tin dưới đây cần được xác nhận lại khi nhận được dữ liệu thật (Tuần 1).
+Nhóm chỉ dùng bản CSV đã trích đặc trưng và không dùng pcap, vì pcap rất nặng và cần giải mã trước khi dùng. Mọi thông tin dưới đây cần được xác nhận lại khi nhận được dữ liệu thật (Tuần 1).
 
 | Định dạng | Ưu điểm | Nhược điểm | Vai trò |
 | --- | --- | --- | --- |
-| CSV | Nhẹ, đã có nhãn, dùng ngay với pandas | Cột nhiều và thưa (nhiều NaN), không tự sửa được đặc trưng | Dữ liệu chính |
-| pcap | Đầy đủ, tự trích đặc trưng tùy ý | Rất lớn, phải giải mã, tốn giờ xử lý | Dự phòng |
+| CSV | Nhẹ, đã có nhãn, dùng ngay với pandas | Cột nhiều và thưa (nhiều NaN), không tự sửa được đặc trưng | Dữ liệu duy nhất |
+| pcap | Đầy đủ, tự trích đặc trưng tùy ý | Rất lớn, phải giải mã, tốn giờ xử lý | Không dùng |
 
 **Việc cần làm ngay trong Tuần 1 (data card):**
 
 - Ghi lại số dòng, số cột, kiểu dữ liệu, tỉ lệ thiếu theo cột, phân bố nhãn theo từng file.
 - Xác định cột nào là nhãn, cột nào là thời gian, cột nào là định danh (MAC, SSID, số thứ tự frame).
 - Kiểm tra mỗi file tấn công có chứa traffic Normal riêng không, vì điều này quyết định cách chia dữ liệu ở mục 5.
-- Nếu link pcap vẫn chưa tải được thì không dừng lại chờ, cứ tiến hành bằng CSV.
+- Kiểm tra CSV còn cột thời gian và cột nguồn phát (BSSID hoặc MAC nguồn) không, vì E5 và cách chia theo thời gian phụ thuộc vào chúng; nếu thiếu, E5 làm bản đơn giản hơn hoặc bỏ, và chia theo file capture.
 
 **Đặc điểm cần lưu ý:** dữ liệu mất cân bằng mạnh; mạng mục tiêu là WPA2-Enterprise có bảo vệ management frame nên một số tấn công (như Deauth) khó nhận diện hơn trên mạng WiFi thông thường; dữ liệu lấy từ môi trường lab nên kết quả không đại diện cho mọi mạng thực tế. Nhóm cần nêu điểm cuối này trong phần hạn chế của báo cáo.
+
+**Giảm dung lượng (nếu cần xuống khoảng 5-10GB):**
+
+- Xử lý từng file riêng, ép kiểu (float64 → float32, chuỗi → category), lưu Parquet rồi mới gộp.
+- Bỏ cột trước khi bỏ dòng (cột định danh, hằng số, gần như toàn trống).
+- Giảm mẫu lớp đa số (Normal), giữ toàn bộ lớp thiểu số.
+- Lấy theo đoạn thời gian liên tục, không lấy ngẫu nhiên từng dòng.
+- Chia train/validation/test trước, chỉ giảm mẫu tập train; giữ tập test gần phân bố thật.
+- Ghi tỉ lệ giảm mẫu và `random_state` vào README và báo cáo.
 
 ## 4. Thiết kế thí nghiệm
 
@@ -86,7 +93,7 @@ Leakage là rủi ro lớn nhất của dự án: các packet liền kề trong 
 5. **Chia dữ liệu theo thời gian trong từng file:** khoảng 70% đầu cho train, 15% giữa cho validation, 15% cuối cho test, có khoảng đệm giữa các phần để packet liền kề không rơi vào hai tập.
 6. **Fit chỉ trên train:** scaler, chọn đặc trưng, SMOTE (nếu dùng) đều chỉ fit trên tập train rồi áp dụng sang validation/test.
 7. **Mất cân bằng lớp:** ưu tiên class weight và undersample lớp Normal; SMOTE chỉ là tùy chọn, chỉ trên train.
-8. **Đặc trưng cửa sổ (E5):** gom theo cửa sổ 1 giây và theo nguồn phát trước khi bỏ timestamp.
+8. **Đặc trưng cửa sổ (E5):** gom theo cửa sổ 1 giây và theo nguồn phát trước khi bỏ timestamp. Chỉ làm được nếu CSV còn cột thời gian và cột nguồn phát.
 
 **Kiểm tra bắt buộc trước khi báo kết quả:** nếu một mô hình đạt gần 100% trên test, dừng lại và rà soát cột định danh cùng cách chia, vì đó thường là dấu hiệu leakage.
 
@@ -172,9 +179,17 @@ Mỗi người có một phần lõi riêng và một phần review chéo, để
 
 Sáu tuần chia thành ba luồng chạy song song; hai mốc quan trọng nhất là dữ liệu sạch cuối Tuần 2 và xong E1 đến E4 cuối Tuần 4.
 
-&#91;embedded content: lộ trình 6 tuần · 3 luồng, 3 mốc kiểm tra\]
-
-Thanh màu là việc của từng người, hình thoi là mốc kiểm tra.
+| Luồng | Việc | T1 | T2 | T3 | T4 | T5 | T6 |
+| --- | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+| Người 1: Dữ liệu | Tải dữ liệu, EDA, data card | ■ | | | | | |
+| | Tiền xử lý, chia theo thời gian | | ■ | | | | |
+| | Đặc trưng cửa sổ (E5) | | | ■ | ■ | | |
+| Người 2: ML truyền thống | Baseline và khung đánh giá | | ■ | | | | |
+| | RF, LightGBM, E1 đến E4 | | | ■ | ■ | | |
+| | SHAP, phân tích lỗi (E7) | | | | | ■ | |
+| Người 3: DL và bất thường | MLP, Isolation Forest, Autoencoder | | ■ | ■ | ■ | | |
+| | E6 unseen attack và demo | | | | ■ | ■ | |
+| Cả nhóm | Hoàn thiện báo cáo, slide | | | | | | ■ |
 
 **Điều kiện qua mỗi mốc**
 
@@ -208,11 +223,9 @@ awid3-wifi-ml/
 
 ## 12. Rủi ro và phương án dự phòng
 
-Bốn rủi ro đầu bảng có khả năng cao nhất làm trễ tiến độ; xử lý chúng sớm quan trọng hơn tối ưu mô hình.
-
 | Rủi ro | Dấu hiệu | Phương án |
 | --- | --- | --- |
-| Không tải được dữ liệu (link pcap lỗi hoặc hết hạn) | Tải dừng giữa chừng, lỗi truy cập | Gửi lại email cho nhóm AWID ngay; làm bằng CSV trước, không chờ pcap |
+| Không tải được dữ liệu (link tải lỗi hoặc hết hạn sau 7 ngày) | Tải dừng giữa chừng, lỗi truy cập | Gửi lại email cho nhóm AWID ngay; chỉ cần có CSV là làm được toàn bộ dự án |
 | Hết RAM khi nạp dữ liệu | Notebook bị kill, máy treo | Đọc theo khối, dùng Parquet, downsample Normal, chạy trên Colab hoặc Kaggle |
 | Leakage làm kết quả ảo | Macro-F1 gần 100% ngay lần chạy đầu | Rà soát cột định danh và cách chia; đổi sang chia theo file capture nếu cần |
 | Một số lớp quá ít mẫu | F1 gần 0 ở vài lớp | Gộp phân tích theo nhóm (quản lý 802.11, mạng, ứng dụng) hoặc báo cáo thẳng hạn chế đó |
@@ -220,8 +233,6 @@ Bốn rủi ro đầu bảng có khả năng cao nhất làm trễ tiến độ;
 | Thành viên bị nghẽn việc | Một phần chờ phần khác quá 3 ngày | Dựng khung trên mẫu nhỏ để làm song song; họp ngắn gỡ vướng |
 
 ## 13. Cấu trúc báo cáo và thuyết trình
-
-Báo cáo đi theo đúng thứ tự câu hỏi nghiên cứu; nên viết từng phần ngay khi thí nghiệm tương ứng xong.
 
 **Báo cáo**
 
@@ -241,8 +252,6 @@ Báo cáo đi theo đúng thứ tự câu hỏi nghiên cứu; nên viết từn
 - Chuẩn bị sẵn 5 câu hỏi dự kiến, ví dụ: vì sao chia theo thời gian, vì sao chọn macro-F1, mô hình có dùng được trên mạng khác không.
 
 ## 14. Checklist hoàn thành
-
-Tick từng mục khi xong; nhóm chỉ coi dự án hoàn tất khi mọi mục lõi được tick.
 
 **Lõi (bắt buộc)**
 
