@@ -157,9 +157,9 @@ Mỗi người có một phần lõi riêng và một phần review chéo, để
 
 | Thành viên | Vai trò | Phụ trách chính | Thí nghiệm | Review chéo |
 | --- | --- | --- | --- | --- |
-| (tên) | Dữ liệu | Nạp dữ liệu, EDA, tiền xử lý, chia dữ liệu, đặc trưng cửa sổ, kiểm tra leakage | Chuẩn bị cho E1 đến E5 | Kiểm tra pipeline của hai người còn lại |
-| (tên) | ML truyền thống | Baseline, Random Forest, LightGBM, tinh chỉnh, SHAP | E1, E2, E3, E4, E7 | Duyệt cách đánh giá và biểu đồ |
-| (tên) | Deep learning và bất thường | MLP, Isolation Forest, Autoencoder, demo Streamlit | E5 (phần mạng nơ-ron), E6 | Duyệt thiết kế thí nghiệm unseen attack |
+| Nhất | Dữ liệu | Nạp dữ liệu, EDA, tiền xử lý, chia dữ liệu, đặc trưng cửa sổ, kiểm tra leakage | Chuẩn bị cho E1 đến E5 | Kiểm tra pipeline của hai người còn lại |
+| Phát | ML truyền thống | Baseline, Random Forest, LightGBM, tinh chỉnh, SHAP | E1, E2, E3, E4, E7 | Duyệt cách đánh giá và biểu đồ |
+| Huy | Deep learning và bất thường | MLP, Isolation Forest, Autoencoder, demo Streamlit | E5 (phần mạng nơ-ron), E6 | Duyệt thiết kế thí nghiệm unseen attack |
 
 **Việc chung cả nhóm**
 
