@@ -33,7 +33,7 @@ def clean_features(features, schema):
 
 
 def assign_splits(labels, timestamps, train_fraction=0.70, validation_fraction=0.15,
-                  gap_fraction=0.01, train_cap_per_label=None, seed=SEED):
+                  gap_fraction=0.0, train_cap_per_label=None, seed=SEED):
     split = np.full(len(labels), -1, dtype="int8")
     generator = np.random.default_rng(seed)
     for label in pd.unique(labels):
@@ -53,14 +53,15 @@ def assign_splits(labels, timestamps, train_fraction=0.70, validation_fraction=0
     return split
 
 
-def split_parquet(source, output_directory, train_cap_per_label=None, batch_size=200_000):
+def split_parquet(source, output_directory, train_cap_per_label=None, gap_fraction=0.0, batch_size=200_000):
     import pyarrow as pa
     import pyarrow.parquet as pq
 
     parquet = pq.ParquetFile(source)
     key = parquet.read(columns=[LABEL_COLUMN, TIME_COLUMN]).to_pandas()
     timestamps = pd.to_numeric(key[TIME_COLUMN], errors="coerce").to_numpy(dtype="float64")
-    split = assign_splits(key[LABEL_COLUMN].to_numpy(), timestamps, train_cap_per_label=train_cap_per_label)
+    split = assign_splits(key[LABEL_COLUMN].to_numpy(), timestamps, gap_fraction=gap_fraction,
+                          train_cap_per_label=train_cap_per_label)
     del key, timestamps
     output_directory = Path(output_directory)
     output_directory.mkdir(parents=True, exist_ok=True)

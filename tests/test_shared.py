@@ -70,15 +70,22 @@ def _labelled_times():
     return labels, timestamps
 
 
-def test_assign_splits_is_ordered_per_label_with_gap():
+def test_assign_splits_is_ordered_per_label_and_keeps_every_row():
     labels, timestamps = _labelled_times()
     split = assign_splits(labels, timestamps)
+    assert (split >= 0).all()
     for label in ("Normal", "Deauth", "SSH"):
         mask = labels == label
         train, validation, test = (timestamps[mask & (split == index)] for index in (0, 1, 2))
         assert len(train) and len(validation) and len(test)
         assert train.max() < validation.min() and validation.max() < test.min()
-        assert mask.sum() - len(train) - len(validation) - len(test) == 2
+        assert len(train) + len(validation) + len(test) == mask.sum()
+
+
+def test_assign_splits_leaves_a_gap_when_asked():
+    labels, timestamps = _labelled_times()
+    split = assign_splits(labels, timestamps, gap_fraction=0.01)
+    assert (split == -1).sum() == 6
 
 
 def test_assign_splits_caps_train_rows_per_label():
@@ -92,7 +99,7 @@ def test_split_parquet_writes_three_files_with_every_label(tmp_path):
     source = tmp_path / "all.parquet"
     pd.DataFrame({"frame.time_epoch": timestamps, "feature": range(300), "Label": labels}).to_parquet(source)
     counts = split_parquet(source, tmp_path / "out", batch_size=70)
-    assert counts["train"] + counts["val"] + counts["test"] == 294
+    assert counts["train"] + counts["val"] + counts["test"] == 300
     for name in ("train", "val", "test"):
         assert set(pd.read_parquet(tmp_path / "out" / f"{name}.parquet")["Label"]) == {"Normal", "Deauth", "SSH"}
 
