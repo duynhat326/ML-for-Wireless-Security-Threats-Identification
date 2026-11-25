@@ -144,3 +144,17 @@ def test_standardize_in_place_matches_standard_scaler():
     mean, scale = fit_standardizer(array, chunk_rows=300)
     standardize_in_place(array, mean, scale, chunk_rows=300)
     assert np.allclose(array, expected, atol=1e-4)
+
+
+def test_load_splits_caps_train_rows_per_label_and_keeps_alignment(tmp_path):
+    labels, timestamps = _labelled_times()
+    source = tmp_path / "all.parquet"
+    pd.DataFrame({"frame.time_epoch": timestamps, "feature": np.arange(300.0), "Label": labels}).to_parquet(source)
+    split_parquet(source, tmp_path / "out", batch_size=70)
+    full = load_splits(tmp_path / "out")
+    capped = load_splits(tmp_path / "out", train_cap_per_label=10)
+    assert len(capped["features_train"]) == len(capped["labels_train"]) == 30
+    assert (capped["labels_train"].value_counts() == 10).all()
+    assert len(capped["features_val"]) == len(full["features_val"])
+    kept = capped["features_train"]["feature"].to_numpy()
+    assert set(kept) <= set(full["features_train"]["feature"].to_numpy())

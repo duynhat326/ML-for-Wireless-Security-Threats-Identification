@@ -109,17 +109,33 @@ def fit_schema(path):
     return {"columns": kept, "flag_columns": [column for column in kept if missing[column] > 0]}
 
 
-def load_feature_matrix(path, schema):
+def select_rows_with_cap(labels, cap, seed=SEED):
+    labels = np.asarray(labels)
+    generator = np.random.default_rng(seed)
+    keep = np.ones(len(labels), dtype=bool)
+    for label in np.unique(labels):
+        positions = np.flatnonzero(labels == label)
+        if len(positions) > cap:
+            keep[positions] = False
+            keep[generator.choice(positions, cap, replace=False)] = True
+    return keep
+
+
+def load_feature_matrix(path, schema, keep=None):
     import pyarrow.parquet as pq
 
     columns, flag_columns = schema["columns"], schema["flag_columns"]
     names = columns + [column + "__missing" for column in flag_columns]
-    data = np.empty((pq.ParquetFile(path).metadata.num_rows, len(names)), dtype="float32")
-    start = 0
+    total_rows = pq.ParquetFile(path).metadata.num_rows
+    data = np.empty((total_rows if keep is None else int(keep.sum()), len(names)), dtype="float32")
+    start = filled = 0
     for numeric in _numeric_batches(path, columns):
         stop = start + len(numeric)
-        data[start:stop, :len(columns)] = numeric.fillna(-1).to_numpy(dtype="float32")
-        data[start:stop, len(columns):] = numeric[flag_columns].isna().to_numpy(dtype="float32")
+        part = numeric if keep is None else numeric[keep[start:stop]]
+        count = len(part)
+        data[filled:filled + count, :len(columns)] = part.fillna(-1).to_numpy(dtype="float32")
+        data[filled:filled + count, len(columns):] = part[flag_columns].isna().to_numpy(dtype="float32")
+        filled += count
         start = stop
     return data, names
 
@@ -153,19 +169,23 @@ def load_labels_and_metadata(path, with_metadata=False):
     return labels, frame
 
 
-def load_splits(data_directory=DATA_DIRECTORY, as_matrix=False):
+def load_splits(data_directory=DATA_DIRECTORY, as_matrix=False, train_cap_per_label=None):
     paths = {name: Path(data_directory) / f"{name}.parquet" for name in ("train", "val", "test")}
     schema = fit_schema(paths["train"])
+    labels_train = load_labels_and_metadata(paths["train"])[0]
+    keep = select_rows_with_cap(labels_train.to_numpy(), train_cap_per_label) if train_cap_per_label else None
+    if keep is not None:
+        labels_train = labels_train[keep].reset_index(drop=True)
 
-    def features(name):
-        data, names = load_feature_matrix(paths[name], schema)
+    def features(name, keep_rows=None):
+        data, names = load_feature_matrix(paths[name], schema, keep_rows)
         return data if as_matrix else pd.DataFrame(data, columns=names, copy=False)
 
     labels_test, metadata_test = load_labels_and_metadata(paths["test"], with_metadata=True)
     return {
         "schema": schema,
-        "features_train": features("train"),
-        "labels_train": load_labels_and_metadata(paths["train"])[0],
+        "features_train": features("train", keep),
+        "labels_train": labels_train,
         "features_val": features("val"),
         "labels_val": load_labels_and_metadata(paths["val"])[0],
         "features_test": features("test"),
