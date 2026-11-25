@@ -1,1 +1,12 @@
 /data
+__pycache__/
+.venv/
+.ipynb_checkpoints/
+.pytest_cache/
+*.parquet
+*.csv
+*.pkl
+*.pt
+*.h5
+!experiments/*/results/*.csv
+!comparison/*.csv

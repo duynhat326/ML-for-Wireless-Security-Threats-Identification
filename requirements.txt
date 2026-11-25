@@ -1,0 +1,12 @@
+duckdb
+pandas
+pyarrow
+numpy
+scikit-learn
+lightgbm
+xgboost
+torch
+joblib
+matplotlib
+streamlit
+pytest
