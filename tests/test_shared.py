@@ -1,10 +1,13 @@
 import numpy as np
 import pandas as pd
 
+from sklearn.preprocessing import StandardScaler
+
 from shared.compare import compare
 from shared.config import LABEL_TO_INDEX, LABELS
 from shared.data_loader import (
-    assign_splits, clean_features, load_splits, split_features_labels, split_parquet,
+    assign_splits, clean_features, fit_standardizer, load_splits, numeric_column,
+    split_features_labels, split_parquet, standardize_in_place,
 )
 from shared.evaluator import save_results
 from shared.tracer import build_alerts
@@ -70,15 +73,22 @@ def _labelled_times():
     return labels, timestamps
 
 
-def test_assign_splits_is_ordered_per_label_with_gap():
+def test_assign_splits_is_ordered_per_label_and_keeps_every_row():
     labels, timestamps = _labelled_times()
     split = assign_splits(labels, timestamps)
+    assert (split >= 0).all()
     for label in ("Normal", "Deauth", "SSH"):
         mask = labels == label
         train, validation, test = (timestamps[mask & (split == index)] for index in (0, 1, 2))
         assert len(train) and len(validation) and len(test)
         assert train.max() < validation.min() and validation.max() < test.min()
-        assert mask.sum() - len(train) - len(validation) - len(test) == 2
+        assert len(train) + len(validation) + len(test) == mask.sum()
+
+
+def test_assign_splits_leaves_a_gap_when_asked():
+    labels, timestamps = _labelled_times()
+    split = assign_splits(labels, timestamps, gap_fraction=0.01)
+    assert (split == -1).sum() == 6
 
 
 def test_assign_splits_caps_train_rows_per_label():
@@ -92,7 +102,7 @@ def test_split_parquet_writes_three_files_with_every_label(tmp_path):
     source = tmp_path / "all.parquet"
     pd.DataFrame({"frame.time_epoch": timestamps, "feature": range(300), "Label": labels}).to_parquet(source)
     counts = split_parquet(source, tmp_path / "out", batch_size=70)
-    assert counts["train"] + counts["val"] + counts["test"] == 294
+    assert counts["train"] + counts["val"] + counts["test"] == 300
     for name in ("train", "val", "test"):
         assert set(pd.read_parquet(tmp_path / "out" / f"{name}.parquet")["Label"]) == {"Normal", "Deauth", "SSH"}
 
@@ -115,3 +125,48 @@ def test_load_splits_streams_float32_features_and_keeps_metadata(tmp_path):
     assert str(features["feature_one"].dtype) == "float32" and len(features) == len(splits["labels_train"])
     assert (features["feature_two"][features["feature_two__missing"] == 1] == -1).all()
     assert "wlan.ta" in splits["metadata_test"] and len(splits["metadata_test"]) == len(splits["features_test"])
+
+
+def test_load_splits_as_matrix_returns_float32_arrays(tmp_path):
+    labels, timestamps = _labelled_times()
+    source = tmp_path / "all.parquet"
+    pd.DataFrame({"frame.time_epoch": timestamps, "feature": np.arange(300.0), "Label": labels}).to_parquet(source)
+    split_parquet(source, tmp_path / "out")
+    splits = load_splits(tmp_path / "out", as_matrix=True)
+    assert isinstance(splits["features_train"], np.ndarray) and splits["features_train"].dtype == np.float32
+    assert len(splits["features_train"]) == len(splits["labels_train"])
+
+
+def test_standardize_in_place_matches_standard_scaler():
+    array = np.random.default_rng(0).normal(5, 3, size=(1000, 4)).astype("float32")
+    array[:, 2] = 7.0
+    expected = StandardScaler().fit_transform(array)
+    mean, scale = fit_standardizer(array, chunk_rows=300)
+    standardize_in_place(array, mean, scale, chunk_rows=300)
+    assert np.allclose(array, expected, atol=1e-4)
+
+
+def test_load_splits_caps_train_rows_per_label_and_keeps_alignment(tmp_path):
+    labels, timestamps = _labelled_times()
+    source = tmp_path / "all.parquet"
+    pd.DataFrame({"frame.time_epoch": timestamps, "feature": np.arange(300.0), "Label": labels}).to_parquet(source)
+    split_parquet(source, tmp_path / "out", batch_size=70)
+    full = load_splits(tmp_path / "out")
+    capped = load_splits(tmp_path / "out", train_cap_per_label=10)
+    assert len(capped["features_train"]) == len(capped["labels_train"]) == 30
+    assert (capped["labels_train"].value_counts() == 10).all()
+    assert len(capped["features_val"]) == len(full["features_val"])
+    kept = capped["features_train"]["feature"].to_numpy()
+    assert set(kept) <= set(full["features_train"]["feature"].to_numpy())
+
+
+def test_numeric_column_matches_pandas_to_numeric_without_pandas():
+    import pyarrow as pa
+
+    values = ["1", " 2 ", "3.5", "-4", "1e3", ".5", "?", "0x10", "", "abc", None, "1,2"]
+    expected = pd.to_numeric(pd.Series(values), errors="coerce").to_numpy(dtype="float64")
+    actual = numeric_column(pa.array(values, type=pa.string())).to_numpy(zero_copy_only=False)
+    assert np.array_equal(np.isnan(actual), np.isnan(expected))
+    assert np.allclose(actual[~np.isnan(actual)], expected[~np.isnan(expected)])
+    assert numeric_column(pa.array([1, None, 3])).to_numpy(zero_copy_only=False)[2] == 3.0
+    assert np.isnan(numeric_column(pa.array([b"x", None])).to_numpy(zero_copy_only=False)).all()

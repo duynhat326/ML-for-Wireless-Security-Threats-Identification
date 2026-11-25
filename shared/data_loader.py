@@ -33,7 +33,7 @@ def clean_features(features, schema):
 
 
 def assign_splits(labels, timestamps, train_fraction=0.70, validation_fraction=0.15,
-                  gap_fraction=0.01, train_cap_per_label=None, seed=SEED):
+                  gap_fraction=0.0, train_cap_per_label=None, seed=SEED):
     split = np.full(len(labels), -1, dtype="int8")
     generator = np.random.default_rng(seed)
     for label in pd.unique(labels):
@@ -53,14 +53,15 @@ def assign_splits(labels, timestamps, train_fraction=0.70, validation_fraction=0
     return split
 
 
-def split_parquet(source, output_directory, train_cap_per_label=None, batch_size=200_000):
+def split_parquet(source, output_directory, train_cap_per_label=None, gap_fraction=0.0, batch_size=200_000):
     import pyarrow as pa
     import pyarrow.parquet as pq
 
     parquet = pq.ParquetFile(source)
     key = parquet.read(columns=[LABEL_COLUMN, TIME_COLUMN]).to_pandas()
     timestamps = pd.to_numeric(key[TIME_COLUMN], errors="coerce").to_numpy(dtype="float64")
-    split = assign_splits(key[LABEL_COLUMN].to_numpy(), timestamps, train_cap_per_label=train_cap_per_label)
+    split = assign_splits(key[LABEL_COLUMN].to_numpy(), timestamps, gap_fraction=gap_fraction,
+                          train_cap_per_label=train_cap_per_label)
     del key, timestamps
     output_directory = Path(output_directory)
     output_directory.mkdir(parents=True, exist_ok=True)
@@ -90,37 +91,97 @@ def _feature_columns(path):
     return [name for name in pq.ParquetFile(path).schema_arrow.names if name not in removed]
 
 
+NUMBER_PATTERN = r"^[-+]?(\d+\.?\d*|\.\d+)([eE][-+]?\d+)?$"
+
+
+def numeric_column(column):
+    import pyarrow as pa
+    import pyarrow.compute as pc
+
+    kind = column.type
+    if pa.types.is_floating(kind) or pa.types.is_integer(kind) or pa.types.is_boolean(kind):
+        return column.cast(pa.float64())
+    if pa.types.is_string(kind) or pa.types.is_large_string(kind):
+        text = pc.utf8_trim_whitespace(column)
+        valid = pc.fill_null(pc.match_substring_regex(text, NUMBER_PATTERN), False)
+        return pc.if_else(valid, text, pa.scalar(None, text.type)).cast(pa.float64())
+    return pa.nulls(len(column), pa.float64())
+
+
 def _numeric_batches(path, columns, batch_size=BATCH_SIZE):
     import pyarrow.parquet as pq
 
     for batch in pq.ParquetFile(path).iter_batches(batch_size=batch_size, columns=columns):
-        yield batch.to_pandas().apply(pd.to_numeric, errors="coerce")
+        position = {name: index for index, name in enumerate(batch.schema.names)}
+        matrix = np.empty((batch.num_rows, len(columns)), dtype="float64")
+        for index, name in enumerate(columns):
+            matrix[:, index] = numeric_column(batch.column(position[name])).to_numpy(zero_copy_only=False)
+        yield matrix
 
 
 def fit_schema(path):
     columns = _feature_columns(path)
-    present = pd.Series(0, index=columns, dtype="int64")
-    missing = pd.Series(0, index=columns, dtype="int64")
-    for numeric in _numeric_batches(path, columns):
-        present += numeric.notna().sum()
-        missing += numeric.isna().sum()
-    kept = [column for column in columns if present[column] > 0]
-    return {"columns": kept, "flag_columns": [column for column in kept if missing[column] > 0]}
+    present = np.zeros(len(columns), dtype="int64")
+    missing = np.zeros(len(columns), dtype="int64")
+    for matrix in _numeric_batches(path, columns):
+        is_missing = np.isnan(matrix)
+        missing += is_missing.sum(axis=0)
+        present += (~is_missing).sum(axis=0)
+    kept = [column for column, count in zip(columns, present) if count > 0]
+    flags = [column for column, count, absent in zip(columns, present, missing) if count > 0 and absent > 0]
+    return {"columns": kept, "flag_columns": flags}
 
 
-def load_features(path, schema):
+def select_rows_with_cap(labels, cap, seed=SEED):
+    labels = np.asarray(labels)
+    generator = np.random.default_rng(seed)
+    keep = np.ones(len(labels), dtype=bool)
+    for label in np.unique(labels):
+        positions = np.flatnonzero(labels == label)
+        if len(positions) > cap:
+            keep[positions] = False
+            keep[generator.choice(positions, cap, replace=False)] = True
+    return keep
+
+
+def load_feature_matrix(path, schema, keep=None):
     import pyarrow.parquet as pq
 
     columns, flag_columns = schema["columns"], schema["flag_columns"]
+    flag_positions = [columns.index(column) for column in flag_columns]
     names = columns + [column + "__missing" for column in flag_columns]
-    data = np.empty((pq.ParquetFile(path).metadata.num_rows, len(names)), dtype="float32")
-    start = 0
-    for numeric in _numeric_batches(path, columns):
-        stop = start + len(numeric)
-        data[start:stop, :len(columns)] = numeric.fillna(-1).to_numpy(dtype="float32")
-        data[start:stop, len(columns):] = numeric[flag_columns].isna().to_numpy(dtype="float32")
+    total_rows = pq.ParquetFile(path).metadata.num_rows
+    data = np.empty((total_rows if keep is None else int(keep.sum()), len(names)), dtype="float32")
+    start = filled = 0
+    for matrix in _numeric_batches(path, columns):
+        stop = start + len(matrix)
+        part = matrix if keep is None else matrix[keep[start:stop]]
+        count = len(part)
+        is_missing = np.isnan(part)
+        data[filled:filled + count, :len(columns)] = np.where(is_missing, -1.0, part)
+        data[filled:filled + count, len(columns):] = is_missing[:, flag_positions]
+        filled += count
         start = stop
-    return pd.DataFrame(data, columns=names, copy=False)
+    return data, names
+
+
+def fit_standardizer(array, chunk_rows=500_000):
+    total = np.zeros(array.shape[1])
+    squares = np.zeros(array.shape[1])
+    for start in range(0, len(array), chunk_rows):
+        block = array[start:start + chunk_rows].astype("float64")
+        total += block.sum(axis=0)
+        squares += (block ** 2).sum(axis=0)
+    mean = total / len(array)
+    scale = np.sqrt(np.maximum(squares / len(array) - mean ** 2, 0.0))
+    return mean.astype("float32"), np.where(scale < 1e-6, 1.0, scale).astype("float32")
+
+
+def standardize_in_place(array, mean, scale, chunk_rows=500_000):
+    for start in range(0, len(array), chunk_rows):
+        block = array[start:start + chunk_rows]
+        block -= mean
+        block /= scale
 
 
 def load_labels_and_metadata(path, with_metadata=False):
@@ -133,17 +194,26 @@ def load_labels_and_metadata(path, with_metadata=False):
     return labels, frame
 
 
-def load_splits(data_directory=DATA_DIRECTORY):
+def load_splits(data_directory=DATA_DIRECTORY, as_matrix=False, train_cap_per_label=None):
     paths = {name: Path(data_directory) / f"{name}.parquet" for name in ("train", "val", "test")}
     schema = fit_schema(paths["train"])
+    labels_train = load_labels_and_metadata(paths["train"])[0]
+    keep = select_rows_with_cap(labels_train.to_numpy(), train_cap_per_label) if train_cap_per_label else None
+    if keep is not None:
+        labels_train = labels_train[keep].reset_index(drop=True)
+
+    def features(name, keep_rows=None):
+        data, names = load_feature_matrix(paths[name], schema, keep_rows)
+        return data if as_matrix else pd.DataFrame(data, columns=names, copy=False)
+
     labels_test, metadata_test = load_labels_and_metadata(paths["test"], with_metadata=True)
     return {
         "schema": schema,
-        "features_train": load_features(paths["train"], schema),
-        "labels_train": load_labels_and_metadata(paths["train"])[0],
-        "features_val": load_features(paths["val"], schema),
+        "features_train": features("train", keep),
+        "labels_train": labels_train,
+        "features_val": features("val"),
         "labels_val": load_labels_and_metadata(paths["val"])[0],
-        "features_test": load_features(paths["test"], schema),
+        "features_test": features("test"),
         "labels_test": labels_test,
         "metadata_test": metadata_test,
     }
