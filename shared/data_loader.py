@@ -109,7 +109,7 @@ def fit_schema(path):
     return {"columns": kept, "flag_columns": [column for column in kept if missing[column] > 0]}
 
 
-def load_features(path, schema):
+def load_feature_matrix(path, schema):
     import pyarrow.parquet as pq
 
     columns, flag_columns = schema["columns"], schema["flag_columns"]
@@ -121,7 +121,26 @@ def load_features(path, schema):
         data[start:stop, :len(columns)] = numeric.fillna(-1).to_numpy(dtype="float32")
         data[start:stop, len(columns):] = numeric[flag_columns].isna().to_numpy(dtype="float32")
         start = stop
-    return pd.DataFrame(data, columns=names, copy=False)
+    return data, names
+
+
+def fit_standardizer(array, chunk_rows=500_000):
+    total = np.zeros(array.shape[1])
+    squares = np.zeros(array.shape[1])
+    for start in range(0, len(array), chunk_rows):
+        block = array[start:start + chunk_rows].astype("float64")
+        total += block.sum(axis=0)
+        squares += (block ** 2).sum(axis=0)
+    mean = total / len(array)
+    scale = np.sqrt(np.maximum(squares / len(array) - mean ** 2, 0.0))
+    return mean.astype("float32"), np.where(scale < 1e-6, 1.0, scale).astype("float32")
+
+
+def standardize_in_place(array, mean, scale, chunk_rows=500_000):
+    for start in range(0, len(array), chunk_rows):
+        block = array[start:start + chunk_rows]
+        block -= mean
+        block /= scale
 
 
 def load_labels_and_metadata(path, with_metadata=False):
@@ -134,17 +153,22 @@ def load_labels_and_metadata(path, with_metadata=False):
     return labels, frame
 
 
-def load_splits(data_directory=DATA_DIRECTORY):
+def load_splits(data_directory=DATA_DIRECTORY, as_matrix=False):
     paths = {name: Path(data_directory) / f"{name}.parquet" for name in ("train", "val", "test")}
     schema = fit_schema(paths["train"])
+
+    def features(name):
+        data, names = load_feature_matrix(paths[name], schema)
+        return data if as_matrix else pd.DataFrame(data, columns=names, copy=False)
+
     labels_test, metadata_test = load_labels_and_metadata(paths["test"], with_metadata=True)
     return {
         "schema": schema,
-        "features_train": load_features(paths["train"], schema),
+        "features_train": features("train"),
         "labels_train": load_labels_and_metadata(paths["train"])[0],
-        "features_val": load_features(paths["val"], schema),
+        "features_val": features("val"),
         "labels_val": load_labels_and_metadata(paths["val"])[0],
-        "features_test": load_features(paths["test"], schema),
+        "features_test": features("test"),
         "labels_test": labels_test,
         "metadata_test": metadata_test,
     }

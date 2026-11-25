@@ -1,10 +1,13 @@
 import numpy as np
 import pandas as pd
 
+from sklearn.preprocessing import StandardScaler
+
 from shared.compare import compare
 from shared.config import LABEL_TO_INDEX, LABELS
 from shared.data_loader import (
-    assign_splits, clean_features, load_splits, split_features_labels, split_parquet,
+    assign_splits, clean_features, fit_standardizer, load_splits, split_features_labels,
+    split_parquet, standardize_in_place,
 )
 from shared.evaluator import save_results
 from shared.tracer import build_alerts
@@ -122,3 +125,22 @@ def test_load_splits_streams_float32_features_and_keeps_metadata(tmp_path):
     assert str(features["feature_one"].dtype) == "float32" and len(features) == len(splits["labels_train"])
     assert (features["feature_two"][features["feature_two__missing"] == 1] == -1).all()
     assert "wlan.ta" in splits["metadata_test"] and len(splits["metadata_test"]) == len(splits["features_test"])
+
+
+def test_load_splits_as_matrix_returns_float32_arrays(tmp_path):
+    labels, timestamps = _labelled_times()
+    source = tmp_path / "all.parquet"
+    pd.DataFrame({"frame.time_epoch": timestamps, "feature": np.arange(300.0), "Label": labels}).to_parquet(source)
+    split_parquet(source, tmp_path / "out")
+    splits = load_splits(tmp_path / "out", as_matrix=True)
+    assert isinstance(splits["features_train"], np.ndarray) and splits["features_train"].dtype == np.float32
+    assert len(splits["features_train"]) == len(splits["labels_train"])
+
+
+def test_standardize_in_place_matches_standard_scaler():
+    array = np.random.default_rng(0).normal(5, 3, size=(1000, 4)).astype("float32")
+    array[:, 2] = 7.0
+    expected = StandardScaler().fit_transform(array)
+    mean, scale = fit_standardizer(array, chunk_rows=300)
+    standardize_in_place(array, mean, scale, chunk_rows=300)
+    assert np.allclose(array, expected, atol=1e-4)
