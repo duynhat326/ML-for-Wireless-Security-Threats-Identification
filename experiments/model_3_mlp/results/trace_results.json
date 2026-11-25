@@ -1,0 +1,4172 @@
+[
+  {
+    "time_start": "2020-12-10T20:01:47.000+00:00",
+    "time_end": "2020-12-10T20:02:03.000+00:00",
+    "attack": "Krack",
+    "confidence": 0.992,
+    "frames": 2048,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:30",
+      "share": 0.348
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:30",
+    "signal_strength_dbm_median": -61.5
+  },
+  {
+    "time_start": "2020-12-10T20:02:06.000+00:00",
+    "time_end": "2020-12-10T20:02:06.000+00:00",
+    "attack": "Krack",
+    "confidence": 0.948,
+    "frames": 4,
+    "source": {
+      "column": "wlan.sa",
+      "value": "50:3e:aa:e4:01:93",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "ff:ff:ff:ff:ff:ff",
+    "signal_strength_dbm_median": -54.0
+  },
+  {
+    "time_start": "2020-12-10T20:02:08.000+00:00",
+    "time_end": "2020-12-10T20:02:08.000+00:00",
+    "attack": "Krack",
+    "confidence": 0.997,
+    "frames": 8,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:26:3e",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "ff:ff:ff:ff:ff:ff",
+    "signal_strength_dbm_median": -52.0
+  },
+  {
+    "time_start": "2020-12-10T20:02:10.000+00:00",
+    "time_end": "2020-12-10T20:03:24.000+00:00",
+    "attack": "Krack",
+    "confidence": 0.963,
+    "frames": 3621,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:30",
+      "share": 0.732
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:30",
+    "signal_strength_dbm_median": -49.0
+  },
+  {
+    "time_start": "2020-12-13T19:02:14.000+00:00",
+    "time_end": "2020-12-13T19:02:23.000+00:00",
+    "attack": "SSDP",
+    "confidence": 1.0,
+    "frames": 338620,
+    "source": {
+      "column": "ip.src",
+      "value": "20.50.64.3",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-13T19:02:29.000+00:00",
+    "time_end": "2020-12-13T19:02:42.000+00:00",
+    "attack": "SSDP",
+    "confidence": 1.0,
+    "frames": 486358,
+    "source": {
+      "column": "ip.src",
+      "value": "20.50.64.3",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-13T19:23:45.000+00:00",
+    "time_end": "2020-12-13T19:24:40.000+00:00",
+    "attack": "Botnet",
+    "confidence": 0.995,
+    "frames": 7759,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.248",
+      "share": 0.491
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -30.0
+  },
+  {
+    "time_start": "2020-12-13T19:24:05.000+00:00",
+    "time_end": "2020-12-13T19:24:05.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.801,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -42.5
+  },
+  {
+    "time_start": "2020-12-15T13:30:06.000+00:00",
+    "time_end": "2020-12-15T13:30:13.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.967,
+    "frames": 10329,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.130",
+      "share": 0.549
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-15T13:30:15.000+00:00",
+    "time_end": "2020-12-15T13:30:17.000+00:00",
+    "attack": "Malware",
+    "confidence": 1.0,
+    "frames": 4890,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.130",
+      "share": 0.847
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:02.000+00:00",
+    "time_end": "2020-12-15T19:37:30.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.996,
+    "frames": 60341,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.059
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -54.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:04.000+00:00",
+    "time_end": "2020-12-15T19:37:05.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.994,
+    "frames": 15,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.125",
+      "share": 0.6
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:05.000+00:00",
+    "time_end": "2020-12-15T19:37:05.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.799,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "04:ed:33:e0:24:82",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -33.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:07.000+00:00",
+    "time_end": "2020-12-15T19:37:09.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.93,
+    "frames": 27,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.125",
+      "share": 0.444
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:07.000+00:00",
+    "time_end": "2020-12-15T19:37:07.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.645,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "04:ed:33:e0:24:82",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -33.5
+  },
+  {
+    "time_start": "2020-12-15T19:37:11.000+00:00",
+    "time_end": "2020-12-15T19:37:11.000+00:00",
+    "attack": "SSH",
+    "confidence": 0.662,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.248",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -33.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:13.000+00:00",
+    "time_end": "2020-12-15T19:37:13.000+00:00",
+    "attack": "SSH",
+    "confidence": 0.859,
+    "frames": 20,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 0.9
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -33.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:13.000+00:00",
+    "time_end": "2020-12-15T19:37:13.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.966,
+    "frames": 8,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.184",
+      "share": 0.75
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -33.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:16.000+00:00",
+    "time_end": "2020-12-15T19:37:16.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.979,
+    "frames": 22,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 0.636
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -33.5
+  },
+  {
+    "time_start": "2020-12-15T19:37:18.000+00:00",
+    "time_end": "2020-12-15T19:37:18.000+00:00",
+    "attack": "SSH",
+    "confidence": 0.506,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.248",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:18.000+00:00",
+    "time_end": "2020-12-15T19:37:18.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.993,
+    "frames": 8,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.125",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -33.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:21.000+00:00",
+    "time_end": "2020-12-15T19:37:22.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.99,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.75
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -44.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:25.000+00:00",
+    "time_end": "2020-12-15T19:37:25.000+00:00",
+    "attack": "SSH",
+    "confidence": 0.861,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -67.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:25.000+00:00",
+    "time_end": "2020-12-15T19:37:25.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.983,
+    "frames": 22,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.682
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:25.000+00:00",
+    "time_end": "2020-12-15T19:37:25.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.995,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "59:ec:be:e4:01:93",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:96:14:fe:33",
+    "signal_strength_dbm_median": -73.0
+  },
+  {
+    "time_start": "2020-12-15T19:37:29.000+00:00",
+    "time_end": "2020-12-15T19:37:29.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -33.0
+  },
+  {
+    "time_start": "2020-12-15T20:48:09.000+00:00",
+    "time_end": "2020-12-15T20:48:18.000+00:00",
+    "attack": "SSH",
+    "confidence": 1.0,
+    "frames": 415,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.120",
+      "share": 0.747
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -33.0
+  },
+  {
+    "time_start": "2020-12-15T20:48:20.000+00:00",
+    "time_end": "2020-12-15T20:48:43.000+00:00",
+    "attack": "SSH",
+    "confidence": 0.999,
+    "frames": 1368,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.120",
+      "share": 0.513
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-15T21:04:45.000+00:00",
+    "time_end": "2020-12-15T21:05:22.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 1.0,
+    "frames": 13632,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:35",
+      "share": 0.769
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:35",
+    "signal_strength_dbm_median": -49.0
+  },
+  {
+    "time_start": "2020-12-15T21:05:18.000+00:00",
+    "time_end": "2020-12-15T21:05:18.000+00:00",
+    "attack": "Deauth",
+    "confidence": 1.0,
+    "frames": 7,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:35",
+      "share": 0.857
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:35",
+    "signal_strength_dbm_median": -45.0
+  },
+  {
+    "time_start": "2020-12-15T21:05:22.000+00:00",
+    "time_end": "2020-12-15T21:05:22.000+00:00",
+    "attack": "Deauth",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:35",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:35",
+    "signal_strength_dbm_median": -43.0
+  },
+  {
+    "time_start": "2020-12-15T21:05:27.000+00:00",
+    "time_end": "2020-12-15T21:05:27.000+00:00",
+    "attack": "Deauth",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:35",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:35",
+    "signal_strength_dbm_median": -43.0
+  },
+  {
+    "time_start": "2020-12-15T21:06:17.000+00:00",
+    "time_end": "2020-12-15T21:06:17.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:35",
+    "signal_strength_dbm_median": -88.0
+  },
+  {
+    "time_start": "2020-12-15T21:06:24.000+00:00",
+    "time_end": "2020-12-15T21:06:24.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:35",
+    "signal_strength_dbm_median": -78.0
+  },
+  {
+    "time_start": "2020-12-15T21:06:39.000+00:00",
+    "time_end": "2020-12-15T21:06:39.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:35",
+    "signal_strength_dbm_median": -80.0
+  },
+  {
+    "time_start": "2020-12-15T21:06:44.000+00:00",
+    "time_end": "2020-12-15T21:06:44.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:35",
+    "signal_strength_dbm_median": -76.0
+  },
+  {
+    "time_start": "2020-12-15T21:07:01.000+00:00",
+    "time_end": "2020-12-15T21:07:01.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 0.631,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:35",
+    "signal_strength_dbm_median": -82.0
+  },
+  {
+    "time_start": "2020-12-15T21:07:06.000+00:00",
+    "time_end": "2020-12-15T21:07:06.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 0.738,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:35",
+    "signal_strength_dbm_median": -80.0
+  },
+  {
+    "time_start": "2020-12-15T21:07:27.000+00:00",
+    "time_end": "2020-12-15T21:07:27.000+00:00",
+    "attack": "Deauth",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:35",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:35",
+    "signal_strength_dbm_median": -44.0
+  },
+  {
+    "time_start": "2020-12-18T15:52:36.000+00:00",
+    "time_end": "2020-12-18T15:53:01.000+00:00",
+    "attack": "Deauth",
+    "confidence": 1.0,
+    "frames": 5842,
+    "source": {
+      "column": "wlan.ta",
+      "value": "ff:ff:ff:ff:ff:ff",
+      "share": 0.587
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -42.0
+  },
+  {
+    "time_start": "2020-12-18T16:50:39.000+00:00",
+    "time_end": "2020-12-18T16:51:17.000+00:00",
+    "attack": "Disas",
+    "confidence": 1.0,
+    "frames": 11270,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 0.649
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -46.5
+  },
+  {
+    "time_start": "2020-12-18T17:18:41.000+00:00",
+    "time_end": "2020-12-18T17:19:15.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 1.0,
+    "frames": 542,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:08:ea:2a:9a:01",
+      "share": 0.183
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -39.0
+  },
+  {
+    "time_start": "2020-12-18T17:18:41.000+00:00",
+    "time_end": "2020-12-18T17:19:15.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 1.0,
+    "frames": 279,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -39.0
+  },
+  {
+    "time_start": "2020-12-18T18:43:01.000+00:00",
+    "time_end": "2020-12-18T18:43:26.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 1.0,
+    "frames": 197,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -41.0
+  },
+  {
+    "time_start": "2020-12-22T15:42:14.000+00:00",
+    "time_end": "2020-12-22T15:42:15.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.866,
+    "frames": 8,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 0.75
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:42:20.000+00:00",
+    "time_end": "2020-12-22T15:42:20.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.999,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:42:22.000+00:00",
+    "time_end": "2020-12-22T15:42:22.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.6,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:42:24.000+00:00",
+    "time_end": "2020-12-22T15:42:24.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:42:28.000+00:00",
+    "time_end": "2020-12-22T15:42:29.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.85,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.41",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -51.5
+  },
+  {
+    "time_start": "2020-12-22T15:42:35.000+00:00",
+    "time_end": "2020-12-22T15:42:35.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.592,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -53.0
+  },
+  {
+    "time_start": "2020-12-22T15:42:44.000+00:00",
+    "time_end": "2020-12-22T15:42:44.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.92,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "50:3e:aa:e3:1f:be",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -54.0
+  },
+  {
+    "time_start": "2020-12-22T15:42:51.000+00:00",
+    "time_end": "2020-12-22T15:42:51.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.936,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:42:54.000+00:00",
+    "time_end": "2020-12-22T15:42:57.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.985,
+    "frames": 5,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.8
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -56.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:13.000+00:00",
+    "time_end": "2020-12-22T15:43:13.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:15.000+00:00",
+    "time_end": "2020-12-22T15:43:16.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.98,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:19.000+00:00",
+    "time_end": "2020-12-22T15:43:20.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.901,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 0.25
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:22.000+00:00",
+    "time_end": "2020-12-22T15:43:22.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.999,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:30.000+00:00",
+    "time_end": "2020-12-22T15:43:30.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.97,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.333
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:31.000+00:00",
+    "time_end": "2020-12-22T15:43:31.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.559,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -64.5
+  },
+  {
+    "time_start": "2020-12-22T15:43:32.000+00:00",
+    "time_end": "2020-12-22T15:43:32.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:35.000+00:00",
+    "time_end": "2020-12-22T15:43:36.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 1.0,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.5
+  },
+  {
+    "time_start": "2020-12-22T15:43:38.000+00:00",
+    "time_end": "2020-12-22T15:43:45.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.826,
+    "frames": 17,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 0.118
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -38.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:39.000+00:00",
+    "time_end": "2020-12-22T15:43:43.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.762,
+    "frames": 5,
+    "source": {
+      "column": "ip.src",
+      "value": "185.29.133.199",
+      "share": 0.2
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:45.000+00:00",
+    "time_end": "2020-12-22T15:43:45.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.683,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -65.5
+  },
+  {
+    "time_start": "2020-12-22T15:43:45.000+00:00",
+    "time_end": "2020-12-22T15:43:48.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.747,
+    "frames": 10,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.6
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:47.000+00:00",
+    "time_end": "2020-12-22T15:43:47.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.751,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -66.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:49.000+00:00",
+    "time_end": "2020-12-22T15:43:49.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.755,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -66.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:51.000+00:00",
+    "time_end": "2020-12-22T15:43:51.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.845,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -66.5
+  },
+  {
+    "time_start": "2020-12-22T15:43:51.000+00:00",
+    "time_end": "2020-12-22T15:43:52.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.687,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:52.000+00:00",
+    "time_end": "2020-12-22T15:43:56.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.895,
+    "frames": 17,
+    "source": {
+      "column": "ip.src",
+      "value": "52.85.156.2",
+      "share": 0.235
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:56.000+00:00",
+    "time_end": "2020-12-22T15:43:57.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.703,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.184",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -51.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:58.000+00:00",
+    "time_end": "2020-12-22T15:43:59.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.803,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -66.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:58.000+00:00",
+    "time_end": "2020-12-22T15:43:58.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.972,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "91.228.74.134",
+      "share": 0.333
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -32.0
+  },
+  {
+    "time_start": "2020-12-22T15:43:59.000+00:00",
+    "time_end": "2020-12-22T15:43:59.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.69,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "b4:ce:40:c8:33:81",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -66.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:03.000+00:00",
+    "time_end": "2020-12-22T15:44:05.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.875,
+    "frames": 6,
+    "source": {
+      "column": "ip.src",
+      "value": "52.85.156.89",
+      "share": 0.333
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:03.000+00:00",
+    "time_end": "2020-12-22T15:44:06.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.731,
+    "frames": 22,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:05.000+00:00",
+    "time_end": "2020-12-22T15:44:05.000+00:00",
+    "attack": "Deauth",
+    "confidence": 0.822,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "94:e9:79:82:c5:77",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -67.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:05.000+00:00",
+    "time_end": "2020-12-22T15:44:05.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.667,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -63.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:07.000+00:00",
+    "time_end": "2020-12-22T15:44:07.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.702,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -64.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:07.000+00:00",
+    "time_end": "2020-12-22T15:44:07.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.992,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "50:3e:aa:e3:1f:be",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:08.000+00:00",
+    "time_end": "2020-12-22T15:44:10.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.688,
+    "frames": 5,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:09.000+00:00",
+    "time_end": "2020-12-22T15:44:52.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.858,
+    "frames": 398,
+    "source": {
+      "column": "ip.src",
+      "value": "151.101.17.140",
+      "share": 0.138
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -35.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:11.000+00:00",
+    "time_end": "2020-12-22T15:44:11.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.608,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -65.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:12.000+00:00",
+    "time_end": "2020-12-22T15:44:12.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.569,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -56.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:14.000+00:00",
+    "time_end": "2020-12-22T15:44:14.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.608,
+    "frames": 5,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 0.6
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:16.000+00:00",
+    "time_end": "2020-12-22T15:44:17.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.897,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.21",
+      "share": 0.667
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:16.000+00:00",
+    "time_end": "2020-12-22T15:44:16.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.815,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 0.667
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -56.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:18.000+00:00",
+    "time_end": "2020-12-22T15:44:18.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.712,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -62.5
+  },
+  {
+    "time_start": "2020-12-22T15:44:19.000+00:00",
+    "time_end": "2020-12-22T15:44:21.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.665,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 0.75
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -63.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:21.000+00:00",
+    "time_end": "2020-12-22T15:44:22.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.804,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.125",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -69.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:23.000+00:00",
+    "time_end": "2020-12-22T15:44:24.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.775,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "18.203.175.209",
+      "share": 0.667
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:25.000+00:00",
+    "time_end": "2020-12-22T15:44:26.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.733,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.5
+  },
+  {
+    "time_start": "2020-12-22T15:44:27.000+00:00",
+    "time_end": "2020-12-22T15:44:27.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.632,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -64.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:28.000+00:00",
+    "time_end": "2020-12-22T15:44:35.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.678,
+    "frames": 69,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.623
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:29.000+00:00",
+    "time_end": "2020-12-22T15:44:29.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.603,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -63.5
+  },
+  {
+    "time_start": "2020-12-22T15:44:31.000+00:00",
+    "time_end": "2020-12-22T15:44:31.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.556,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -63.5
+  },
+  {
+    "time_start": "2020-12-22T15:44:33.000+00:00",
+    "time_end": "2020-12-22T15:44:33.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.678,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.160",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -63.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:37.000+00:00",
+    "time_end": "2020-12-22T15:44:40.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.694,
+    "frames": 7,
+    "source": {
+      "column": "ip.src",
+      "value": "99.181.67.49",
+      "share": 0.857
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -35.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:37.000+00:00",
+    "time_end": "2020-12-22T15:44:42.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.774,
+    "frames": 15,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 0.4
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:44.000+00:00",
+    "time_end": "2020-12-22T15:44:45.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.8,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "99.181.67.49",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -35.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:44.000+00:00",
+    "time_end": "2020-12-22T15:44:47.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.65,
+    "frames": 21,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 0.524
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:47.000+00:00",
+    "time_end": "2020-12-22T15:44:47.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.679,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "99.181.67.49",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:49.000+00:00",
+    "time_end": "2020-12-22T15:44:49.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.562,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "99.181.67.49",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:49.000+00:00",
+    "time_end": "2020-12-22T15:44:53.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.638,
+    "frames": 24,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 0.792
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:51.000+00:00",
+    "time_end": "2020-12-22T15:44:53.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.721,
+    "frames": 8,
+    "source": {
+      "column": "ip.src",
+      "value": "99.181.67.49",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -35.5
+  },
+  {
+    "time_start": "2020-12-22T15:44:54.000+00:00",
+    "time_end": "2020-12-22T15:44:59.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.91,
+    "frames": 14,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 0.286
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:55.000+00:00",
+    "time_end": "2020-12-22T15:44:58.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.866,
+    "frames": 9,
+    "source": {
+      "column": "ip.src",
+      "value": "99.181.67.49",
+      "share": 0.889
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:55.000+00:00",
+    "time_end": "2020-12-22T15:44:55.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.73,
+    "frames": 14,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 0.857
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -56.0
+  },
+  {
+    "time_start": "2020-12-22T15:44:57.000+00:00",
+    "time_end": "2020-12-22T15:44:59.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.749,
+    "frames": 21,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 0.762
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:01.000+00:00",
+    "time_end": "2020-12-22T15:45:01.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.587,
+    "frames": 6,
+    "source": {
+      "column": "ip.src",
+      "value": "99.181.67.49",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.5
+  },
+  {
+    "time_start": "2020-12-22T15:45:01.000+00:00",
+    "time_end": "2020-12-22T15:45:37.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.917,
+    "frames": 790,
+    "source": {
+      "column": "ip.src",
+      "value": "52.85.156.201",
+      "share": 0.491
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -35.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:01.000+00:00",
+    "time_end": "2020-12-22T15:45:01.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.78,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "b4:ce:40:c8:33:81",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:bf:24",
+    "signal_strength_dbm_median": -70.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:03.000+00:00",
+    "time_end": "2020-12-22T15:45:03.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.759,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "99.181.67.49",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:03.000+00:00",
+    "time_end": "2020-12-22T15:45:30.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.84,
+    "frames": 452,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.418
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:16.000+00:00",
+    "time_end": "2020-12-22T15:45:17.000+00:00",
+    "attack": "SSH",
+    "confidence": 0.636,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.41",
+      "share": 0.75
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -67.5
+  },
+  {
+    "time_start": "2020-12-22T15:45:17.000+00:00",
+    "time_end": "2020-12-22T15:45:17.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.671,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "99.181.79.5",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -35.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:32.000+00:00",
+    "time_end": "2020-12-22T15:45:33.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.996,
+    "frames": 11,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.130",
+      "share": 0.455
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:32.000+00:00",
+    "time_end": "2020-12-22T15:45:39.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.792,
+    "frames": 31,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 0.419
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:35.000+00:00",
+    "time_end": "2020-12-22T15:45:36.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.983,
+    "frames": 24,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.130",
+      "share": 0.708
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:36.000+00:00",
+    "time_end": "2020-12-22T15:45:36.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.968,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -62.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:39.000+00:00",
+    "time_end": "2020-12-22T15:45:39.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.705,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "40.115.7.161",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:41.000+00:00",
+    "time_end": "2020-12-22T15:45:41.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.577,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:41.000+00:00",
+    "time_end": "2020-12-22T15:45:41.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.944,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -59.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:43.000+00:00",
+    "time_end": "2020-12-22T15:45:54.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.929,
+    "frames": 131,
+    "source": {
+      "column": "ip.src",
+      "value": "104.16.237.230",
+      "share": 0.321
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:45.000+00:00",
+    "time_end": "2020-12-22T15:45:45.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.609,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:50.000+00:00",
+    "time_end": "2020-12-22T15:45:59.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.773,
+    "frames": 31,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 0.387
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:45:58.000+00:00",
+    "time_end": "2020-12-22T15:46:02.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.914,
+    "frames": 16,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 0.188
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:01.000+00:00",
+    "time_end": "2020-12-22T15:46:01.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.863,
+    "frames": 5,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.184",
+      "share": 0.6
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -61.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:03.000+00:00",
+    "time_end": "2020-12-22T15:46:04.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.727,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.184",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -47.5
+  },
+  {
+    "time_start": "2020-12-22T15:46:04.000+00:00",
+    "time_end": "2020-12-22T15:46:04.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.952,
+    "frames": 11,
+    "source": {
+      "column": "ip.src",
+      "value": "104.16.237.230",
+      "share": 0.273
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -35.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:06.000+00:00",
+    "time_end": "2020-12-22T15:46:08.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.883,
+    "frames": 19,
+    "source": {
+      "column": "ip.src",
+      "value": "104.16.237.230",
+      "share": 0.632
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -35.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:06.000+00:00",
+    "time_end": "2020-12-22T15:46:06.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.896,
+    "frames": 5,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.184",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -60.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:08.000+00:00",
+    "time_end": "2020-12-22T15:46:16.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.708,
+    "frames": 54,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.481
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:10.000+00:00",
+    "time_end": "2020-12-22T15:46:12.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.887,
+    "frames": 5,
+    "source": {
+      "column": "ip.src",
+      "value": "151.101.17.140",
+      "share": 0.4
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:16.000+00:00",
+    "time_end": "2020-12-22T15:47:00.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.965,
+    "frames": 923,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.248",
+      "share": 0.243
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -35.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:18.000+00:00",
+    "time_end": "2020-12-22T15:46:20.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.71,
+    "frames": 7,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.571
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:20.000+00:00",
+    "time_end": "2020-12-22T15:46:20.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "94:e9:79:82:c5:77",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -68.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:23.000+00:00",
+    "time_end": "2020-12-22T15:46:23.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.679,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "94:e9:79:82:c5:77",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -67.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:23.000+00:00",
+    "time_end": "2020-12-22T15:46:23.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.53,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "23.40.209.97",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -34.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:25.000+00:00",
+    "time_end": "2020-12-22T15:46:47.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.85,
+    "frames": 99,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.184",
+      "share": 0.434
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -62.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:29.000+00:00",
+    "time_end": "2020-12-22T15:46:29.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "94:e9:79:82:c5:77",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -68.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:35.000+00:00",
+    "time_end": "2020-12-22T15:46:36.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.984,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -49.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:43.000+00:00",
+    "time_end": "2020-12-22T15:46:43.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.998,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -62.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:49.000+00:00",
+    "time_end": "2020-12-22T15:46:49.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.939,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.41",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -64.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:51.000+00:00",
+    "time_end": "2020-12-22T15:46:52.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.803,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.667
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-22T15:46:54.000+00:00",
+    "time_end": "2020-12-22T15:47:01.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.875,
+    "frames": 51,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 0.667
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-26T19:00:03.000+00:00",
+    "time_end": "2020-12-26T19:00:03.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.965,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:00:05.000+00:00",
+    "time_end": "2020-12-26T19:00:05.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.892,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:00:17.000+00:00",
+    "time_end": "2020-12-26T19:00:17.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.927,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:00:27.000+00:00",
+    "time_end": "2020-12-26T19:00:27.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.943,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:00:30.000+00:00",
+    "time_end": "2020-12-26T19:00:30.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.528,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:01:02.000+00:00",
+    "time_end": "2020-12-26T19:01:02.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.985,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -62.0
+  },
+  {
+    "time_start": "2020-12-26T19:01:03.000+00:00",
+    "time_end": "2020-12-26T19:01:03.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.997,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:01:11.000+00:00",
+    "time_end": "2020-12-26T19:01:11.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.98,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 0.667
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:01:23.000+00:00",
+    "time_end": "2020-12-26T19:01:27.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.951,
+    "frames": 8,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 0.625
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:01:29.000+00:00",
+    "time_end": "2020-12-26T19:01:29.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.999,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:01:45.000+00:00",
+    "time_end": "2020-12-26T19:01:45.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.915,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:01:57.000+00:00",
+    "time_end": "2020-12-26T19:01:58.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.808,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "94:e9:79:82:c5:77",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -68.5
+  },
+  {
+    "time_start": "2020-12-26T19:02:00.000+00:00",
+    "time_end": "2020-12-26T19:02:02.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.914,
+    "frames": 12,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.130",
+      "share": 0.833
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:08.000+00:00",
+    "time_end": "2020-12-26T19:02:08.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.838,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.130",
+      "share": 0.667
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:10.000+00:00",
+    "time_end": "2020-12-26T19:02:10.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.998,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:14.000+00:00",
+    "time_end": "2020-12-26T19:02:14.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.978,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:16.000+00:00",
+    "time_end": "2020-12-26T19:02:17.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.967,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 0.667
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:22.000+00:00",
+    "time_end": "2020-12-26T19:02:25.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.911,
+    "frames": 6,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:24.000+00:00",
+    "time_end": "2020-12-26T19:02:24.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.714,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "b4:ce:40:c8:33:81",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -63.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:28.000+00:00",
+    "time_end": "2020-12-26T19:02:28.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.685,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:b1:c1:91:4c:72",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -57.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:29.000+00:00",
+    "time_end": "2020-12-26T19:02:29.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.958,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:31.000+00:00",
+    "time_end": "2020-12-26T19:02:37.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.914,
+    "frames": 11,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 0.182
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:31.000+00:00",
+    "time_end": "2020-12-26T19:02:31.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.901,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:b1:c1:91:4c:72",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -60.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:39.000+00:00",
+    "time_end": "2020-12-26T19:02:39.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.994,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -61.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:43.000+00:00",
+    "time_end": "2020-12-26T19:02:48.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.882,
+    "frames": 35,
+    "source": {
+      "column": "ip.src",
+      "value": "52.85.221.123",
+      "share": 0.371
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:43.000+00:00",
+    "time_end": "2020-12-26T19:02:44.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.85,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:44.000+00:00",
+    "time_end": "2020-12-26T19:02:46.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.851,
+    "frames": 5,
+    "source": {
+      "column": "ip.src",
+      "value": "216.58.208.45",
+      "share": 0.4
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:44.000+00:00",
+    "time_end": "2020-12-26T19:02:44.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.876,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "b4:ce:40:c8:33:81",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -66.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:48.000+00:00",
+    "time_end": "2020-12-26T19:02:51.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.791,
+    "frames": 26,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.254",
+      "share": 0.808
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -59.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:50.000+00:00",
+    "time_end": "2020-12-26T19:02:53.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.806,
+    "frames": 15,
+    "source": {
+      "column": "ip.src",
+      "value": "99.181.67.249",
+      "share": 0.333
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:55.000+00:00",
+    "time_end": "2020-12-26T19:02:57.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.814,
+    "frames": 13,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.73",
+      "share": 0.385
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -59.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:55.000+00:00",
+    "time_end": "2020-12-26T19:02:55.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.999,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "94:e9:79:82:c5:77",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -68.0
+  },
+  {
+    "time_start": "2020-12-26T19:02:56.000+00:00",
+    "time_end": "2020-12-26T19:02:59.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.82,
+    "frames": 9,
+    "source": {
+      "column": "ip.src",
+      "value": "52.85.156.201",
+      "share": 0.556
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:00.000+00:00",
+    "time_end": "2020-12-26T19:03:04.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.744,
+    "frames": 7,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 0.286
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:01.000+00:00",
+    "time_end": "2020-12-26T19:03:01.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.971,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:b1:c1:91:4c:72",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -59.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:02.000+00:00",
+    "time_end": "2020-12-26T19:03:04.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.878,
+    "frames": 5,
+    "source": {
+      "column": "ip.src",
+      "value": "23.12.100.138",
+      "share": 0.2
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:08.000+00:00",
+    "time_end": "2020-12-26T19:03:08.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.8,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.130",
+      "share": 0.333
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:08.000+00:00",
+    "time_end": "2020-12-26T19:03:08.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.84,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "52.11.92.162",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:33.000+00:00",
+    "time_end": "2020-12-26T19:03:35.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.919,
+    "frames": 4,
+    "source": {
+      "column": "ip.src",
+      "value": "185.33.221.91",
+      "share": 0.25
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:34.000+00:00",
+    "time_end": "2020-12-26T19:03:36.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.881,
+    "frames": 11,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 0.182
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:40.000+00:00",
+    "time_end": "2020-12-26T19:03:57.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.906,
+    "frames": 395,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.254",
+      "share": 0.382
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:41.000+00:00",
+    "time_end": "2020-12-26T19:03:52.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.889,
+    "frames": 142,
+    "source": {
+      "column": "ip.src",
+      "value": "151.101.17.140",
+      "share": 0.275
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:44.000+00:00",
+    "time_end": "2020-12-26T19:03:46.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.992,
+    "frames": 3,
+    "source": {
+      "column": "wlan.sa",
+      "value": "24:f5:a2:ea:86:c3",
+      "share": 0.333
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -70.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:44.000+00:00",
+    "time_end": "2020-12-26T19:03:44.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.966,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:49.000+00:00",
+    "time_end": "2020-12-26T19:03:49.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.998,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "b4:ce:40:c8:33:81",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -69.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:51.000+00:00",
+    "time_end": "2020-12-26T19:03:51.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "b4:ce:40:c8:33:81",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -68.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:53.000+00:00",
+    "time_end": "2020-12-26T19:03:53.000+00:00",
+    "attack": "Kr00k",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "94:e9:79:82:c5:77",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -68.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:58.000+00:00",
+    "time_end": "2020-12-26T19:04:00.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.951,
+    "frames": 10,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 0.3
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:03:59.000+00:00",
+    "time_end": "2020-12-26T19:04:23.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.926,
+    "frames": 538,
+    "source": {
+      "column": "ip.src",
+      "value": "23.12.103.89",
+      "share": 0.316
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:02.000+00:00",
+    "time_end": "2020-12-26T19:04:13.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.817,
+    "frames": 69,
+    "source": {
+      "column": "ip.src",
+      "value": "23.12.103.89",
+      "share": 0.522
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:04.000+00:00",
+    "time_end": "2020-12-26T19:04:04.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 1.0,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:b1:c1:91:4c:72",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -59.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:09.000+00:00",
+    "time_end": "2020-12-26T19:04:10.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.977,
+    "frames": 4,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:b1:c1:91:4c:72",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -64.5
+  },
+  {
+    "time_start": "2020-12-26T19:04:14.000+00:00",
+    "time_end": "2020-12-26T19:04:15.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 1.0,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:15.000+00:00",
+    "time_end": "2020-12-26T19:04:22.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.93,
+    "frames": 15,
+    "source": {
+      "column": "ip.src",
+      "value": "68.232.34.200",
+      "share": 0.2
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:17.000+00:00",
+    "time_end": "2020-12-26T19:04:17.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.912,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "50:3e:aa:e4:01:93",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "ff:ff:ff:ff:ff:ff",
+    "signal_strength_dbm_median": -61.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:18.000+00:00",
+    "time_end": "2020-12-26T19:04:18.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.999,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:26:3e",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -75.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:19.000+00:00",
+    "time_end": "2020-12-26T19:04:20.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.955,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:b1:c1:91:4c:72",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -60.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:23.000+00:00",
+    "time_end": "2020-12-26T19:04:23.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.999,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "b4:ce:40:c8:33:81",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -69.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:25.000+00:00",
+    "time_end": "2020-12-26T19:04:25.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.761,
+    "frames": 7,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.42",
+      "share": 0.857
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -69.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:25.000+00:00",
+    "time_end": "2020-12-26T19:04:25.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "52.114.133.60",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:25.000+00:00",
+    "time_end": "2020-12-26T19:04:25.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.998,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -50.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:30.000+00:00",
+    "time_end": "2020-12-26T19:04:31.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 1.0,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:b1:c1:91:4c:72",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -59.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:33.000+00:00",
+    "time_end": "2020-12-26T19:04:33.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 1.0,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:b1:c1:91:4c:72",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -67.5
+  },
+  {
+    "time_start": "2020-12-26T19:04:34.000+00:00",
+    "time_end": "2020-12-26T19:04:34.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.956,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "50:3e:aa:e3:1f:be",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -71.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:36.000+00:00",
+    "time_end": "2020-12-26T19:04:45.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.871,
+    "frames": 40,
+    "source": {
+      "column": "ip.src",
+      "value": "151.101.17.140",
+      "share": 0.575
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:41.000+00:00",
+    "time_end": "2020-12-26T19:04:48.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.865,
+    "frames": 17,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.254",
+      "share": 0.529
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -59.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:47.000+00:00",
+    "time_end": "2020-12-26T19:05:03.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.918,
+    "frames": 233,
+    "source": {
+      "column": "ip.src",
+      "value": "151.101.17.140",
+      "share": 0.348
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:50.000+00:00",
+    "time_end": "2020-12-26T19:05:13.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.809,
+    "frames": 303,
+    "source": {
+      "column": "ip.src",
+      "value": "23.12.103.89",
+      "share": 0.393
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:51.000+00:00",
+    "time_end": "2020-12-26T19:04:53.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.876,
+    "frames": 3,
+    "source": {
+      "column": "wlan.sa",
+      "value": "94:e9:79:82:c5:77",
+      "share": 0.667
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -82.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:52.000+00:00",
+    "time_end": "2020-12-26T19:04:52.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:26:3e",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -71.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:55.000+00:00",
+    "time_end": "2020-12-26T19:04:55.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.731,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.239",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:56.000+00:00",
+    "time_end": "2020-12-26T19:04:56.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.922,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:b1:c1:91:4c:72",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -66.0
+  },
+  {
+    "time_start": "2020-12-26T19:04:59.000+00:00",
+    "time_end": "2020-12-26T19:04:59.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.958,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:26:3e",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -69.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:01.000+00:00",
+    "time_end": "2020-12-26T19:05:01.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:05.000+00:00",
+    "time_end": "2020-12-26T19:05:18.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.959,
+    "frames": 314,
+    "source": {
+      "column": "ip.src",
+      "value": "52.85.156.201",
+      "share": 0.318
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:05.000+00:00",
+    "time_end": "2020-12-26T19:05:14.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.883,
+    "frames": 17,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:08:ea:2a:9a:01",
+      "share": 0.294
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -64.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:16.000+00:00",
+    "time_end": "2020-12-26T19:05:20.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.932,
+    "frames": 77,
+    "source": {
+      "column": "ip.src",
+      "value": "185.70.41.130",
+      "share": 0.442
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:16.000+00:00",
+    "time_end": "2020-12-26T19:05:16.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "94:e9:79:82:c5:77",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -80.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:20.000+00:00",
+    "time_end": "2020-12-26T19:05:31.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.95,
+    "frames": 135,
+    "source": {
+      "column": "ip.src",
+      "value": "23.12.103.89",
+      "share": 0.363
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:22.000+00:00",
+    "time_end": "2020-12-26T19:05:28.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.823,
+    "frames": 113,
+    "source": {
+      "column": "ip.src",
+      "value": "23.12.103.89",
+      "share": 0.69
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:22.000+00:00",
+    "time_end": "2020-12-26T19:05:23.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 0.989,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -70.5
+  },
+  {
+    "time_start": "2020-12-26T19:05:22.000+00:00",
+    "time_end": "2020-12-26T19:05:22.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.588,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "40.74.219.49",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:30.000+00:00",
+    "time_end": "2020-12-26T19:05:30.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.875,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.254",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:30.000+00:00",
+    "time_end": "2020-12-26T19:05:30.000+00:00",
+    "attack": "Evil_Twin",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "94:e9:79:82:c5:77",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -68.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:32.000+00:00",
+    "time_end": "2020-12-26T19:05:34.000+00:00",
+    "attack": "Disas",
+    "confidence": 1.0,
+    "frames": 7,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:33.000+00:00",
+    "time_end": "2020-12-26T19:05:37.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.904,
+    "frames": 16,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 0.625
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -59.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:34.000+00:00",
+    "time_end": "2020-12-26T19:05:34.000+00:00",
+    "attack": "Krack",
+    "confidence": 0.658,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:39.000+00:00",
+    "time_end": "2020-12-26T19:05:39.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.679,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.190",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -59.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:39.000+00:00",
+    "time_end": "2020-12-26T19:05:40.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.784,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:41.000+00:00",
+    "time_end": "2020-12-26T19:05:41.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 1.0,
+    "frames": 2,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:41.000+00:00",
+    "time_end": "2020-12-26T19:05:42.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.925,
+    "frames": 9,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.41-192.168.2.41-192.168.2.41",
+      "share": 0.444
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -69.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:42.000+00:00",
+    "time_end": "2020-12-26T19:05:42.000+00:00",
+    "attack": "Disas",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -66.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:44.000+00:00",
+    "time_end": "2020-12-26T19:05:44.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 1.0,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -47.5
+  },
+  {
+    "time_start": "2020-12-26T19:05:44.000+00:00",
+    "time_end": "2020-12-26T19:05:47.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 0.999,
+    "frames": 4,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:45.000+00:00",
+    "time_end": "2020-12-26T19:05:45.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.611,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:47.000+00:00",
+    "time_end": "2020-12-26T19:05:47.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.945,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.41-192.168.2.41-192.168.2.41",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -69.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:49.000+00:00",
+    "time_end": "2020-12-26T19:05:49.000+00:00",
+    "attack": "Disas",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -67.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:49.000+00:00",
+    "time_end": "2020-12-26T19:05:52.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.977,
+    "frames": 10,
+    "source": {
+      "column": "ip.src",
+      "value": "192.229.221.185",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -52.5
+  },
+  {
+    "time_start": "2020-12-26T19:05:50.000+00:00",
+    "time_end": "2020-12-26T19:05:50.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "a4:08:ea:2a:9a:01",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -66.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:50.000+00:00",
+    "time_end": "2020-12-26T19:05:50.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 0.999,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:50.000+00:00",
+    "time_end": "2020-12-26T19:05:50.000+00:00",
+    "attack": "Krack",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "24:f5:a2:ea:86:c3",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -70.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:50.000+00:00",
+    "time_end": "2020-12-26T19:05:50.000+00:00",
+    "attack": "Botnet",
+    "confidence": 0.935,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.125",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -72.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:50.000+00:00",
+    "time_end": "2020-12-26T19:05:50.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.724,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:55.000+00:00",
+    "time_end": "2020-12-26T19:05:59.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.931,
+    "frames": 19,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.41-192.168.2.41-192.168.2.41",
+      "share": 0.368
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -69.0
+  },
+  {
+    "time_start": "2020-12-26T19:05:56.000+00:00",
+    "time_end": "2020-12-26T19:05:56.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 0.994,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:01.000+00:00",
+    "time_end": "2020-12-26T19:06:35.000+00:00",
+    "attack": "Disas",
+    "confidence": 1.0,
+    "frames": 28769,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 0.836
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:01.000+00:00",
+    "time_end": "2020-12-26T19:06:01.000+00:00",
+    "attack": "Botnet",
+    "confidence": 0.73,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.21",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:01.000+00:00",
+    "time_end": "2020-12-26T19:06:04.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.914,
+    "frames": 7,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.41-192.168.2.41-192.168.2.41",
+      "share": 0.286
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -69.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:02.000+00:00",
+    "time_end": "2020-12-26T19:06:02.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 0.965,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:03.000+00:00",
+    "time_end": "2020-12-26T19:06:04.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 0.995,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:07.000+00:00",
+    "time_end": "2020-12-26T19:06:08.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 0.914,
+    "frames": 2,
+    "source": {
+      "column": "wlan.sa",
+      "value": "00:c0:ca:a8:29:56",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:07.000+00:00",
+    "time_end": "2020-12-26T19:06:08.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.719,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.41-192.168.2.41-192.168.2.41",
+      "share": 0.333
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -69.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:10.000+00:00",
+    "time_end": "2020-12-26T19:06:10.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.998,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.41-192.168.2.41",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -69.5
+  },
+  {
+    "time_start": "2020-12-26T19:06:13.000+00:00",
+    "time_end": "2020-12-26T19:06:21.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.886,
+    "frames": 33,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.254",
+      "share": 0.455
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -58.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:15.000+00:00",
+    "time_end": "2020-12-26T19:06:16.000+00:00",
+    "attack": "SQL_Injection",
+    "confidence": 0.812,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:16.000+00:00",
+    "time_end": "2020-12-26T19:06:17.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 0.799,
+    "frames": 2,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:17.000+00:00",
+    "time_end": "2020-12-26T19:06:17.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 0.834,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:19.000+00:00",
+    "time_end": "2020-12-26T19:06:20.000+00:00",
+    "attack": "Botnet",
+    "confidence": 0.863,
+    "frames": 3,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.254",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -59.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:23.000+00:00",
+    "time_end": "2020-12-26T19:06:23.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 0.788,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -32.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:23.000+00:00",
+    "time_end": "2020-12-26T19:06:29.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.835,
+    "frames": 46,
+    "source": {
+      "column": "ip.src",
+      "value": "52.85.156.36",
+      "share": 0.609
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:25.000+00:00",
+    "time_end": "2020-12-26T19:06:25.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 0.83,
+    "frames": 1,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -32.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:25.000+00:00",
+    "time_end": "2020-12-26T19:06:25.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:25.000+00:00",
+    "time_end": "2020-12-26T19:06:25.000+00:00",
+    "attack": "Botnet",
+    "confidence": 0.751,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.125",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -71.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:28.000+00:00",
+    "time_end": "2020-12-26T19:06:28.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:30.000+00:00",
+    "time_end": "2020-12-26T19:06:30.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:33.000+00:00",
+    "time_end": "2020-12-26T19:06:35.000+00:00",
+    "attack": "(Re)Assoc",
+    "confidence": 0.995,
+    "frames": 16,
+    "source": {
+      "column": "wlan.sa",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 0.938
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -32.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:33.000+00:00",
+    "time_end": "2020-12-26T19:06:33.000+00:00",
+    "attack": "RogueAP",
+    "confidence": 1.0,
+    "frames": 1,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:34.000+00:00",
+    "time_end": "2020-12-26T19:06:41.000+00:00",
+    "attack": "Malware",
+    "confidence": 0.943,
+    "frames": 72,
+    "source": {
+      "column": "ip.src",
+      "value": "151.101.17.140",
+      "share": 0.764
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:37.000+00:00",
+    "time_end": "2020-12-26T19:06:37.000+00:00",
+    "attack": "Botnet",
+    "confidence": 0.562,
+    "frames": 2,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 0.5
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:38.000+00:00",
+    "time_end": "2020-12-26T19:06:38.000+00:00",
+    "attack": "Disas",
+    "confidence": 1.0,
+    "frames": 2,
+    "source": {
+      "column": "wlan.ta",
+      "value": "0c:9d:92:54:fe:34",
+      "share": 1.0
+    },
+    "impersonation": true,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:40.000+00:00",
+    "time_end": "2020-12-26T19:06:40.000+00:00",
+    "attack": "Botnet",
+    "confidence": 0.713,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -36.0
+  },
+  {
+    "time_start": "2020-12-26T19:06:40.000+00:00",
+    "time_end": "2020-12-26T19:06:40.000+00:00",
+    "attack": "Website_spoofing",
+    "confidence": 0.885,
+    "frames": 1,
+    "source": {
+      "column": "ip.src",
+      "value": "192.168.2.1",
+      "share": 1.0
+    },
+    "impersonation": false,
+    "bssid": "0c:9d:92:54:fe:34",
+    "signal_strength_dbm_median": -32.0
+  }
+]

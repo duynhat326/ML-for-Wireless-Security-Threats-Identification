@@ -6,7 +6,8 @@ from sklearn.preprocessing import StandardScaler
 from shared.compare import compare
 from shared.config import LABEL_TO_INDEX, LABELS
 from shared.data_loader import (
-    assign_splits, clean_features, fit_standardizer, load_splits, numeric_column,
+    assign_splits, clean_features, fit_schema, fit_standardizer, load_feature_matrix, load_splits,
+    numeric_column,
     split_features_labels, split_parquet, standardize_in_place,
 )
 from shared.evaluator import save_results
@@ -170,3 +171,18 @@ def test_numeric_column_matches_pandas_to_numeric_without_pandas():
     assert np.allclose(actual[~np.isnan(actual)], expected[~np.isnan(expected)])
     assert numeric_column(pa.array([1, None, 3])).to_numpy(zero_copy_only=False)[2] == 3.0
     assert np.isnan(numeric_column(pa.array([b"x", None])).to_numpy(zero_copy_only=False)).all()
+
+
+def test_load_feature_matrix_clips_values_too_large_for_float32(tmp_path):
+    path = tmp_path / "train.parquet"
+    pd.DataFrame({"huge": ["1e39"] * 9 + ["5"], "small": [1.0] * 10}).to_parquet(path)
+    data, names = load_feature_matrix(path, fit_schema(path))
+    assert names == ["huge", "small"] and np.isfinite(data).all() and data[0, 0] == np.float32(1e30)
+
+
+def test_standardize_in_place_clips_outliers_and_stays_finite():
+    array = np.random.default_rng(1).normal(size=(1000, 3)).astype("float32")
+    array[0, 1] = 1e30
+    mean, scale = fit_standardizer(array)
+    standardize_in_place(array, mean, scale, clip=10)
+    assert np.isfinite(array).all() and np.abs(array).max() <= 10
