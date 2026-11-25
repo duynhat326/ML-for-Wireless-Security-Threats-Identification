@@ -6,8 +6,8 @@ from sklearn.preprocessing import StandardScaler
 from shared.compare import compare
 from shared.config import LABEL_TO_INDEX, LABELS
 from shared.data_loader import (
-    assign_splits, clean_features, fit_standardizer, load_splits, split_features_labels,
-    split_parquet, standardize_in_place,
+    assign_splits, clean_features, fit_standardizer, load_splits, numeric_column,
+    split_features_labels, split_parquet, standardize_in_place,
 )
 from shared.evaluator import save_results
 from shared.tracer import build_alerts
@@ -158,3 +158,15 @@ def test_load_splits_caps_train_rows_per_label_and_keeps_alignment(tmp_path):
     assert len(capped["features_val"]) == len(full["features_val"])
     kept = capped["features_train"]["feature"].to_numpy()
     assert set(kept) <= set(full["features_train"]["feature"].to_numpy())
+
+
+def test_numeric_column_matches_pandas_to_numeric_without_pandas():
+    import pyarrow as pa
+
+    values = ["1", " 2 ", "3.5", "-4", "1e3", ".5", "?", "0x10", "", "abc", None, "1,2"]
+    expected = pd.to_numeric(pd.Series(values), errors="coerce").to_numpy(dtype="float64")
+    actual = numeric_column(pa.array(values, type=pa.string())).to_numpy(zero_copy_only=False)
+    assert np.array_equal(np.isnan(actual), np.isnan(expected))
+    assert np.allclose(actual[~np.isnan(actual)], expected[~np.isnan(expected)])
+    assert numeric_column(pa.array([1, None, 3])).to_numpy(zero_copy_only=False)[2] == 3.0
+    assert np.isnan(numeric_column(pa.array([b"x", None])).to_numpy(zero_copy_only=False)).all()

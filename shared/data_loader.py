@@ -91,22 +91,45 @@ def _feature_columns(path):
     return [name for name in pq.ParquetFile(path).schema_arrow.names if name not in removed]
 
 
+NUMBER_PATTERN = r"^[-+]?(\d+\.?\d*|\.\d+)([eE][-+]?\d+)?$"
+
+
+def numeric_column(column):
+    import pyarrow as pa
+    import pyarrow.compute as pc
+
+    kind = column.type
+    if pa.types.is_floating(kind) or pa.types.is_integer(kind) or pa.types.is_boolean(kind):
+        return column.cast(pa.float64())
+    if pa.types.is_string(kind) or pa.types.is_large_string(kind):
+        text = pc.utf8_trim_whitespace(column)
+        valid = pc.fill_null(pc.match_substring_regex(text, NUMBER_PATTERN), False)
+        return pc.if_else(valid, text, pa.scalar(None, text.type)).cast(pa.float64())
+    return pa.nulls(len(column), pa.float64())
+
+
 def _numeric_batches(path, columns, batch_size=BATCH_SIZE):
     import pyarrow.parquet as pq
 
     for batch in pq.ParquetFile(path).iter_batches(batch_size=batch_size, columns=columns):
-        yield batch.to_pandas().apply(pd.to_numeric, errors="coerce")
+        position = {name: index for index, name in enumerate(batch.schema.names)}
+        matrix = np.empty((batch.num_rows, len(columns)), dtype="float64")
+        for index, name in enumerate(columns):
+            matrix[:, index] = numeric_column(batch.column(position[name])).to_numpy(zero_copy_only=False)
+        yield matrix
 
 
 def fit_schema(path):
     columns = _feature_columns(path)
-    present = pd.Series(0, index=columns, dtype="int64")
-    missing = pd.Series(0, index=columns, dtype="int64")
-    for numeric in _numeric_batches(path, columns):
-        present += numeric.notna().sum()
-        missing += numeric.isna().sum()
-    kept = [column for column in columns if present[column] > 0]
-    return {"columns": kept, "flag_columns": [column for column in kept if missing[column] > 0]}
+    present = np.zeros(len(columns), dtype="int64")
+    missing = np.zeros(len(columns), dtype="int64")
+    for matrix in _numeric_batches(path, columns):
+        is_missing = np.isnan(matrix)
+        missing += is_missing.sum(axis=0)
+        present += (~is_missing).sum(axis=0)
+    kept = [column for column, count in zip(columns, present) if count > 0]
+    flags = [column for column, count, absent in zip(columns, present, missing) if count > 0 and absent > 0]
+    return {"columns": kept, "flag_columns": flags}
 
 
 def select_rows_with_cap(labels, cap, seed=SEED):
@@ -125,16 +148,18 @@ def load_feature_matrix(path, schema, keep=None):
     import pyarrow.parquet as pq
 
     columns, flag_columns = schema["columns"], schema["flag_columns"]
+    flag_positions = [columns.index(column) for column in flag_columns]
     names = columns + [column + "__missing" for column in flag_columns]
     total_rows = pq.ParquetFile(path).metadata.num_rows
     data = np.empty((total_rows if keep is None else int(keep.sum()), len(names)), dtype="float32")
     start = filled = 0
-    for numeric in _numeric_batches(path, columns):
-        stop = start + len(numeric)
-        part = numeric if keep is None else numeric[keep[start:stop]]
+    for matrix in _numeric_batches(path, columns):
+        stop = start + len(matrix)
+        part = matrix if keep is None else matrix[keep[start:stop]]
         count = len(part)
-        data[filled:filled + count, :len(columns)] = part.fillna(-1).to_numpy(dtype="float32")
-        data[filled:filled + count, len(columns):] = part[flag_columns].isna().to_numpy(dtype="float32")
+        is_missing = np.isnan(part)
+        data[filled:filled + count, :len(columns)] = np.where(is_missing, -1.0, part)
+        data[filled:filled + count, len(columns):] = is_missing[:, flag_positions]
         filled += count
         start = stop
     return data, names
