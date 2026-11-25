@@ -9,6 +9,7 @@ from shared.config import (
 )
 
 BATCH_SIZE = 100_000
+FLOAT32_LIMIT = 1e30
 
 
 def encode_labels(series):
@@ -158,7 +159,7 @@ def load_feature_matrix(path, schema, keep=None):
         part = matrix if keep is None else matrix[keep[start:stop]]
         count = len(part)
         is_missing = np.isnan(part)
-        data[filled:filled + count, :len(columns)] = np.where(is_missing, -1.0, part)
+        data[filled:filled + count, :len(columns)] = np.clip(np.where(is_missing, -1.0, part), -FLOAT32_LIMIT, FLOAT32_LIMIT)
         data[filled:filled + count, len(columns):] = is_missing[:, flag_positions]
         filled += count
         start = stop
@@ -177,11 +178,13 @@ def fit_standardizer(array, chunk_rows=500_000):
     return mean.astype("float32"), np.where(scale < 1e-6, 1.0, scale).astype("float32")
 
 
-def standardize_in_place(array, mean, scale, chunk_rows=500_000):
+def standardize_in_place(array, mean, scale, chunk_rows=500_000, clip=None):
     for start in range(0, len(array), chunk_rows):
         block = array[start:start + chunk_rows]
         block -= mean
         block /= scale
+        if clip is not None:
+            np.clip(block, -clip, clip, out=block)
 
 
 def load_labels_and_metadata(path, with_metadata=False):
