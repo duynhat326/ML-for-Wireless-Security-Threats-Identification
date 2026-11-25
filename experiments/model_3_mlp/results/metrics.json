@@ -1,0 +1,8 @@
+{
+  "model": "mlp",
+  "accuracy": 0.9600698077171362,
+  "macro_f1": 0.7478338750706556,
+  "weighted_f1": 0.9553224284425792,
+  "train_time_seconds": 118.47684781499993,
+  "predict_latency_milliseconds": 0.0009690699998827768
+}
