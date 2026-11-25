@@ -5,29 +5,25 @@ import pandas as pd
 
 from shared.config import (
     DATA_DIRECTORY, DROP_COLUMNS, GROUP_COLUMN, LABEL_COLUMN, LABEL_TO_INDEX,
-    METADATA_COLUMNS, NORMAL_INDEX, SEED, TIME_COLUMN,
+    METADATA_COLUMNS, SEED, TIME_COLUMN,
 )
+
+BATCH_SIZE = 100_000
+
+
+def encode_labels(series):
+    labels = series.map(LABEL_TO_INDEX)
+    if labels.isna().any():
+        raise ValueError(f"nhãn lạ: {sorted(series[labels.isna()].unique())}")
+    return labels.astype("int64")
 
 
 def split_features_labels(dataframe):
     metadata = dataframe[[column for column in METADATA_COLUMNS if column in dataframe.columns]].copy()
-    labels = None
-    if LABEL_COLUMN in dataframe.columns:
-        labels = dataframe[LABEL_COLUMN].map(LABEL_TO_INDEX)
-        if labels.isna().any():
-            unknown = sorted(dataframe.loc[labels.isna(), LABEL_COLUMN].unique())
-            raise ValueError(f"nhãn lạ: {unknown}")
-        labels = labels.astype("int64")
+    labels = encode_labels(dataframe[LABEL_COLUMN]) if LABEL_COLUMN in dataframe.columns else None
     removed = [LABEL_COLUMN, GROUP_COLUMN, *DROP_COLUMNS]
     features = dataframe.drop(columns=[column for column in removed if column in dataframe.columns])
     return features, labels, metadata
-
-
-def fit_schema(features):
-    numeric = features.apply(pd.to_numeric, errors="coerce")
-    columns = [column for column in numeric.columns if numeric[column].notna().any()]
-    flag_columns = [column for column in columns if numeric[column].isna().any()]
-    return {"columns": columns, "flag_columns": flag_columns}
 
 
 def clean_features(features, schema):
@@ -36,50 +32,118 @@ def clean_features(features, schema):
     return pd.concat([numeric.fillna(-1).astype("float32"), flags], axis=1)
 
 
-def temporal_split(dataframe, train_fraction=0.70, validation_fraction=0.15, gap_fraction=0.01):
-    dataframe = dataframe.reset_index(drop=True)
-    timestamps = pd.to_numeric(dataframe[TIME_COLUMN], errors="coerce").dropna().sort_values(kind="stable")
-    dataframe = dataframe.loc[timestamps.index]
-    row_count = len(dataframe)
-    gap_rows = int(row_count * gap_fraction)
-    train_end = int(row_count * train_fraction)
-    validation_end = int(row_count * (train_fraction + validation_fraction))
-    return (dataframe.iloc[:train_end],
-            dataframe.iloc[train_end + gap_rows:validation_end],
-            dataframe.iloc[validation_end + gap_rows:])
+def assign_splits(labels, timestamps, train_fraction=0.70, validation_fraction=0.15,
+                  gap_fraction=0.01, train_cap_per_label=None, seed=SEED):
+    split = np.full(len(labels), -1, dtype="int8")
+    generator = np.random.default_rng(seed)
+    for label in pd.unique(labels):
+        positions = np.flatnonzero(labels == label)
+        ordered = positions[np.argsort(timestamps[positions], kind="stable")]
+        count = len(ordered)
+        gap_rows = int(count * gap_fraction)
+        train_end = int(count * train_fraction)
+        validation_end = int(count * (train_fraction + validation_fraction))
+        train_rows = ordered[:train_end]
+        if train_cap_per_label and len(train_rows) > train_cap_per_label:
+            train_rows = generator.choice(train_rows, train_cap_per_label, replace=False)
+        split[train_rows] = 0
+        split[ordered[train_end + gap_rows:validation_end]] = 1
+        split[ordered[validation_end + gap_rows:]] = 2
+    split[np.isnan(timestamps)] = -1
+    return split
 
 
-def split_all(dataframe):
-    if GROUP_COLUMN in dataframe.columns:
-        groups = [group for _, group in dataframe.groupby(GROUP_COLUMN, sort=False)]
-    else:
-        groups = [dataframe]
-    parts = [temporal_split(group) for group in groups]
-    return tuple(pd.concat(part, ignore_index=True) for part in zip(*parts))
+def split_parquet(source, output_directory, train_cap_per_label=None, batch_size=200_000):
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+
+    parquet = pq.ParquetFile(source)
+    key = parquet.read(columns=[LABEL_COLUMN, TIME_COLUMN]).to_pandas()
+    timestamps = pd.to_numeric(key[TIME_COLUMN], errors="coerce").to_numpy(dtype="float64")
+    split = assign_splits(key[LABEL_COLUMN].to_numpy(), timestamps, train_cap_per_label=train_cap_per_label)
+    del key, timestamps
+    output_directory = Path(output_directory)
+    output_directory.mkdir(parents=True, exist_ok=True)
+    names = ("train", "val", "test")
+    writers, offset = {}, 0
+    for batch in parquet.iter_batches(batch_size=batch_size):
+        table = pa.Table.from_batches([batch])
+        part = split[offset:offset + len(table)]
+        offset += len(table)
+        for index, name in enumerate(names):
+            rows = np.flatnonzero(part == index)
+            if len(rows) == 0:
+                continue
+            if name not in writers:
+                writers[name] = pq.ParquetWriter(output_directory / f"{name}.parquet", table.schema,
+                                                 compression="zstd")
+            writers[name].write_table(table.take(pa.array(rows)))
+    for writer in writers.values():
+        writer.close()
+    return {name: int((split == index).sum()) for index, name in enumerate(names)}
 
 
-def cap_normal(features, labels, cap, seed=SEED):
-    normal = np.flatnonzero(labels.to_numpy() == NORMAL_INDEX)
-    attacks = np.flatnonzero(labels.to_numpy() != NORMAL_INDEX)
-    if len(normal) > cap:
-        normal = np.random.default_rng(seed).choice(normal, cap, replace=False)
-    indices = np.sort(np.concatenate([attacks, normal]))
-    return features.iloc[indices], labels.iloc[indices]
+def _feature_columns(path):
+    import pyarrow.parquet as pq
+
+    removed = {LABEL_COLUMN, GROUP_COLUMN, *DROP_COLUMNS}
+    return [name for name in pq.ParquetFile(path).schema_arrow.names if name not in removed]
 
 
-def load_splits(data_directory=DATA_DIRECTORY, normal_cap=None):
-    raw = {name: pd.read_parquet(Path(data_directory) / f"{name}.parquet")
-           for name in ("train", "val", "test")}
-    features_train, labels_train, _ = split_features_labels(raw["train"])
-    schema = fit_schema(features_train)
-    if normal_cap:
-        features_train, labels_train = cap_normal(features_train, labels_train, normal_cap)
-    features_val, labels_val, _ = split_features_labels(raw["val"])
-    features_test, labels_test, metadata_test = split_features_labels(raw["test"])
+def _numeric_batches(path, columns, batch_size=BATCH_SIZE):
+    import pyarrow.parquet as pq
+
+    for batch in pq.ParquetFile(path).iter_batches(batch_size=batch_size, columns=columns):
+        yield batch.to_pandas().apply(pd.to_numeric, errors="coerce")
+
+
+def fit_schema(path):
+    columns = _feature_columns(path)
+    present = pd.Series(0, index=columns, dtype="int64")
+    missing = pd.Series(0, index=columns, dtype="int64")
+    for numeric in _numeric_batches(path, columns):
+        present += numeric.notna().sum()
+        missing += numeric.isna().sum()
+    kept = [column for column in columns if present[column] > 0]
+    return {"columns": kept, "flag_columns": [column for column in kept if missing[column] > 0]}
+
+
+def load_features(path, schema):
+    import pyarrow.parquet as pq
+
+    columns, flag_columns = schema["columns"], schema["flag_columns"]
+    names = columns + [column + "__missing" for column in flag_columns]
+    data = np.empty((pq.ParquetFile(path).metadata.num_rows, len(names)), dtype="float32")
+    start = 0
+    for numeric in _numeric_batches(path, columns):
+        stop = start + len(numeric)
+        data[start:stop, :len(columns)] = numeric.fillna(-1).to_numpy(dtype="float32")
+        data[start:stop, len(columns):] = numeric[flag_columns].isna().to_numpy(dtype="float32")
+        start = stop
+    return pd.DataFrame(data, columns=names, copy=False)
+
+
+def load_labels_and_metadata(path, with_metadata=False):
+    import pyarrow.parquet as pq
+
+    names = pq.ParquetFile(path).schema_arrow.names
+    wanted = [LABEL_COLUMN] + ([c for c in METADATA_COLUMNS if c in names] if with_metadata else [])
+    frame = pq.read_table(path, columns=wanted).to_pandas()
+    labels = encode_labels(frame.pop(LABEL_COLUMN))
+    return labels, frame
+
+
+def load_splits(data_directory=DATA_DIRECTORY):
+    paths = {name: Path(data_directory) / f"{name}.parquet" for name in ("train", "val", "test")}
+    schema = fit_schema(paths["train"])
+    labels_test, metadata_test = load_labels_and_metadata(paths["test"], with_metadata=True)
     return {
         "schema": schema,
-        "features_train": clean_features(features_train, schema), "labels_train": labels_train,
-        "features_val": clean_features(features_val, schema), "labels_val": labels_val,
-        "features_test": clean_features(features_test, schema), "labels_test": labels_test,
+        "features_train": load_features(paths["train"], schema),
+        "labels_train": load_labels_and_metadata(paths["train"])[0],
+        "features_val": load_features(paths["val"], schema),
+        "labels_val": load_labels_and_metadata(paths["val"])[0],
+        "features_test": load_features(paths["test"], schema),
+        "labels_test": labels_test,
         "metadata_test": metadata_test,
     }

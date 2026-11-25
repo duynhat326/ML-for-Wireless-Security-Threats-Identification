@@ -29,6 +29,18 @@ METADATA_COLUMNS = SOURCE_METADATA_COLUMNS + [
 IMPERSONATION_LABELS = {"Deauth", "Disas", "Kr00k", "RogueAP"}
 NETWORK_LAYER_LABELS = {"SSH", "Botnet", "Malware", "SQL_Injection", "SSDP", "Website_spoofing"}
 
-DATA_DIRECTORY = Path(os.environ.get("AWID3_DATA", "/kaggle/input/awid3-train-test"))
+KAGGLE_INPUT = Path("/kaggle/input")
+AWID3_CLEAN_PATH = Path("/kaggle/input/datasets/solefit/awid3-clean-dataset/awid3_clean.parquet")
+
+
+def find_input_file(filename):
+    if KAGGLE_INPUT.exists():
+        found = next(KAGGLE_INPUT.rglob(filename), None)
+        if found:
+            return found
+    return KAGGLE_INPUT / filename
+
+
+DATA_DIRECTORY = Path(os.environ["AWID3_DATA"]) if "AWID3_DATA" in os.environ else find_input_file("train.parquet").parent
 REPO_ROOT = Path(os.environ.get(
     "REPO_ROOT", "/kaggle/working/ML-for-Wireless-Security-Threats-Identification"))

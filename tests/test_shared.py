@@ -4,7 +4,7 @@ import pandas as pd
 from shared.compare import compare
 from shared.config import LABEL_TO_INDEX, LABELS
 from shared.data_loader import (
-    cap_normal, clean_features, fit_schema, split_features_labels, temporal_split,
+    assign_splits, clean_features, load_splits, split_features_labels, split_parquet,
 )
 from shared.evaluator import save_results
 from shared.tracer import build_alerts
@@ -28,25 +28,11 @@ def test_split_removes_identifiers_and_keeps_metadata():
 
 def test_clean_flags_missing_and_aligns_columns():
     features, _, _ = split_features_labels(_sample_dataframe())
-    schema = fit_schema(features)
+    schema = {"columns": ["feature_one", "feature_two"], "flag_columns": ["feature_two"]}
     cleaned = clean_features(features, schema)
     assert "feature_two__missing" in cleaned and (cleaned["feature_two"] >= -1).all()
     assert cleaned["feature_two"].isna().sum() == 0
     assert list(clean_features(features[["feature_one"]], schema).columns) == list(cleaned.columns)
-
-
-def test_temporal_split_is_ordered_with_gap():
-    train, validation, test = temporal_split(_sample_dataframe(100))
-    assert train["frame.time_epoch"].max() < validation["frame.time_epoch"].min()
-    assert validation["frame.time_epoch"].max() < test["frame.time_epoch"].min()
-    assert len(train) + len(validation) + len(test) < 100
-
-
-def test_cap_normal_only_reduces_normal():
-    features, labels, _ = split_features_labels(_sample_dataframe())
-    _, capped = cap_normal(features, labels, 20)
-    assert (capped == LABEL_TO_INDEX["Deauth"]).sum() == 10
-    assert (capped == LABEL_TO_INDEX["Normal"]).sum() == 20
 
 
 def test_save_results_and_compare(tmp_path):
@@ -76,3 +62,56 @@ def test_build_alerts_groups_incidents_and_flags_impersonation():
     alerts = build_alerts(metadata, predicted, confidences, minimum_confidence=0.5, gap_seconds=1.0)
     assert [alert["frames"] for alert in alerts] == [3, 2]
     assert alerts[0]["impersonation"] and alerts[0]["source"]["column"] == "wlan.ta"
+
+
+def _labelled_times():
+    labels = np.array(["Normal"] * 100 + ["Deauth"] * 100 + ["SSH"] * 100, dtype=object)
+    timestamps = np.concatenate([np.arange(100.0) + offset for offset in (0, 1000, 2000)])
+    return labels, timestamps
+
+
+def test_assign_splits_is_ordered_per_label_with_gap():
+    labels, timestamps = _labelled_times()
+    split = assign_splits(labels, timestamps)
+    for label in ("Normal", "Deauth", "SSH"):
+        mask = labels == label
+        train, validation, test = (timestamps[mask & (split == index)] for index in (0, 1, 2))
+        assert len(train) and len(validation) and len(test)
+        assert train.max() < validation.min() and validation.max() < test.min()
+        assert mask.sum() - len(train) - len(validation) - len(test) == 2
+
+
+def test_assign_splits_caps_train_rows_per_label():
+    labels, timestamps = _labelled_times()
+    split = assign_splits(labels, timestamps, train_cap_per_label=10)
+    assert all(((labels == label) & (split == 0)).sum() == 10 for label in ("Normal", "Deauth", "SSH"))
+
+
+def test_split_parquet_writes_three_files_with_every_label(tmp_path):
+    labels, timestamps = _labelled_times()
+    source = tmp_path / "all.parquet"
+    pd.DataFrame({"frame.time_epoch": timestamps, "feature": range(300), "Label": labels}).to_parquet(source)
+    counts = split_parquet(source, tmp_path / "out", batch_size=70)
+    assert counts["train"] + counts["val"] + counts["test"] == 294
+    for name in ("train", "val", "test"):
+        assert set(pd.read_parquet(tmp_path / "out" / f"{name}.parquet")["Label"]) == {"Normal", "Deauth", "SSH"}
+
+
+def test_load_splits_streams_float32_features_and_keeps_metadata(tmp_path):
+    labels, timestamps = _labelled_times()
+    frame = pd.DataFrame({
+        "frame.time_epoch": timestamps, "wlan.ta": "ap", "wlan_radio.signal_dbm": -50.0,
+        "feature_one": np.arange(300.0), "feature_two": [None if i % 2 else "1" for i in range(300)],
+        "empty": [None] * 300, "Label": labels,
+    })
+    source = tmp_path / "all.parquet"
+    frame.to_parquet(source)
+    split_parquet(source, tmp_path / "out", batch_size=70)
+    splits = load_splits(tmp_path / "out")
+    assert splits["schema"] == {"columns": ["wlan_radio.signal_dbm", "feature_one", "feature_two"],
+                                "flag_columns": ["feature_two"]}
+    features = splits["features_train"]
+    assert list(features.columns) == ["wlan_radio.signal_dbm", "feature_one", "feature_two", "feature_two__missing"]
+    assert str(features["feature_one"].dtype) == "float32" and len(features) == len(splits["labels_train"])
+    assert (features["feature_two"][features["feature_two__missing"] == 1] == -1).all()
+    assert "wlan.ta" in splits["metadata_test"] and len(splits["metadata_test"]) == len(splits["features_test"])
