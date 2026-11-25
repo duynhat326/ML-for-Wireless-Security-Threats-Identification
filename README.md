@@ -40,7 +40,7 @@ Mô hình là `model.pkl` (Random Forest, LightGBM) hoặc `model.pt` (mạng n�
 
 - Địa chỉ MAC, địa chỉ IP, tên mạng SSID, BSSID, số thứ tự frame, dấu thời gian, kênh và tần số không vào mô hình; chúng nằm ở bảng metadata để truy vết.
 - Giá trị thiếu và `?` thành -1, kèm cờ `__missing`.
-- Chỉ giảm mẫu Normal trên train (tối đa 500.000 dòng). Test giữ phân bố thật.
+- Chia theo luồng, mỗi lần chỉ giữ vài trăm nghìn dòng trong bộ nhớ (đỉnh khoảng 3,6 GB trên file thật). Train bị giới hạn 500.000 dòng cho mỗi nhãn; val và test giữ phân bố thật.
 - Seed cố định 42, mỗi model chạy một lần.
 - Mô hình đạt gần 100% trên test: dừng và rà lại cột định danh và cách chia.
 
